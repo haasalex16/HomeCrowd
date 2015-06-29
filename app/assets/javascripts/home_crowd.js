@@ -5,9 +5,11 @@ window.HomeCrowd = {
   Routers: {},
   initialize: function() {
     alert('Hello from Backbone!');
+    new HomeCrowd.Routers.Router({$rootEl: $('#main')});
+    Backbone.history.start();
   }
 };
 
-$(document).ready(function(){
-  HomeCrowd.initialize();
-});
+// $(document).ready(function(){
+//   HomeCrowd.initialize();
+// });
