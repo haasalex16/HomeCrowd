@@ -13,3 +13,39 @@
  *= require_tree .
  *= require_self
  */
+
+
+html, body, h1, h2, nav, a, section,
+header, ul, li, p, input, button, main,
+form {
+ margin: 0;
+ padding: 0;
+ border: 0;
+ outline: 0;
+
+ background: transparent;
+
+ font: inherit;
+ text-align: inherit;
+ text-decoration: inherit;
+ color: inherit;
+}
+
+ul {
+ list-style: none;
+}
+
+/*clear fix*/
+
+.group:after {
+ content: "";
+ display: block;
+ clear: both;
+}
+
+#map-canvas {
+ height: 500px;
+ width: 700px;
+ margin: 0;
+ padding: 0;
+}
