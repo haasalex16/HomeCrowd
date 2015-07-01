@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629192536) do
+ActiveRecord::Schema.define(version: 20150701203600) do
 
   create_table "bars", force: :cascade do |t|
     t.string   "name",       null: false
@@ -20,13 +20,9 @@ ActiveRecord::Schema.define(version: 20150629192536) do
     t.string   "website"
     t.string   "notes"
     t.boolean  "alumni"
-    t.float    "longitude"
-    t.float    "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "loyalty"
   end
-
-  add_index "bars", ["latitude"], name: "index_bars_on_latitude"
-  add_index "bars", ["longitude"], name: "index_bars_on_longitude"
 
 end
