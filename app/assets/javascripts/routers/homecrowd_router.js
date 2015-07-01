@@ -6,10 +6,12 @@ HomeCrowd.Routers.Router = Backbone.Router.extend({
 
   initialize: function(options) {
     this.$rootEl = options.$rootEl;
+    this.bars = HomeCrowd.Collections.bars;
   },
 
   home: function() {
-    var view = new HomeCrowd.Views.HomeShow();
+    this.bars.fetch();
+    var view = new HomeCrowd.Views.HomeShow({collection: this.bars});
     this._swapView(view);
   },
 
