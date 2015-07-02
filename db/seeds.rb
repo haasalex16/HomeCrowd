@@ -1,29 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-Bar.create({
-  name: 'Ainsworth Park',
-  address: '111 E 18th St, New York, NY 10003',
-  number: '(212) 673-2467',
-  website: 'http://ainsworthparknyc.com/',
-  notes: 'Sounds For All Football.  No Sound For Most Basketball',
-  alumni: false,
-  longitude: -73.987783,
-  latitude: 40.737025,
-  })
-
-Bar.create({
-  name: 'Professor Thoms',
-  address: '219 2nd Ave., New York, NY',
-  number: '(212) 260-9480',
-  website: 'http://www.professorthoms.com/',
-  notes: 'Sounds For All Football.  No Sound For Most Basketball',
-  alumni: true,
-  longitude: -73.987783,
-  latitude: 40.737025,
-  })
+Bar.create({:name=>"Ainsworth Park", :address=>"111 E 18th St, New York, NY 10003", :lat=>40.737029, :lng=>-73.987794, :number=>"(212) 673-2467", :website=>"http://ainsworthparknyc.com/", :alumni=>"FALSE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Duffy's Tavern and Grille", :address=>"420 W Diversey Pkwy, Chicago, IL 60614", :lat=>41.933005, :lng=>-87.640457, :number=>"(773) 549-9090", :website=>"http://www.bar1events.com/duffys/", :alumni=>"FALSE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"The Newport Bar & Grill", :address=>"1344 W Newport Ave., Chicago, IL", :lat=>41.944489, :lng=>-87.663416, :number=>"(773) 325-9111", :website=>"http://www.thenewportchicago.com/Home.html", :alumni=>"FALSE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Moe's Cantina - Kinzie", :address=>"155 W Kinzie, Chicago, IL", :lat=>41.888873, :lng=>-87.63321, :number=>"(312) 245-2000", :website=>"http://moescantina.com/index.htm", :alumni=>"FALSE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Moe's Cantina - Clark", :address=>"3518 N. Clark Street, Chicago, IL", :lat=>41.946064, :lng=>-87.65594, :number=>"(773) 248-0002", :website=>"http://moescantina.com/index.htm", :alumni=>"FALSE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Brother Jimmy's Union Square", :address=>"116 East 16th Street , New York, NY", :lat=>40.735318, :lng=>-73.988473, :number=>"(212) 673-6465", :website=>"http://www.brotherjimmys.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Professor Thoms", :address=>"219 2nd Ave., New York, NY", :lat=>40.732086, :lng=>-73.985563, :number=>"(212) 260-9480", :website=>"http://www.professorthoms.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"The Blarney Stone", :address=>"5625 Geary Blvd, San Francisco, CA 94121", :lat=>37.78, :lng=>-122.479982, :number=>"(415) 386-9914", :website=>"https://plus.google.com/105461307783245752874/about?gl=us&hl=en", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Buckley's in Belltown", :address=>"2331 2nd Ave, Seattle, WA 98121", :lat=>47.614489, :lng=>-122.347027, :number=>"(206) 588-8879", :website=>"http://www.buckleysseattle.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Baileys Pub", :address=>"1607 York Ave, New York, NY 10028", :lat=>40.775257, :lng=>-73.947964, :number=>"(212) 650-1341", :website=>"http://baileysnyc.com/", :alumni=>"FALSE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Whitehall Tavern", :address=>"2391 Peachtree Rd NE, Atlanta, GA 30305", :lat=>33.820294, :lng=>-84.387891, :number=>"(404) 842-1010", :website=>"http://www.whitehall-tavern.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Flipflop's Beach Bar and Grill", :address=>"106 N College Rd, Greensboro, NC 27410", :lat=>36.077374, :lng=>-79.896463, :number=>"(336) 285-9787", :website=>"http://flipflopsbeachbarandgrill.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Peanut Farm", :address=>"5227 Old Seward Hwy, Anchorage, AK 99518", :lat=>61.172771, :lng=>-149.867559, :number=>"(907) 563-3283", :website=>"http://wemustbenuts.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Sweet Caroline's Restaurant & Bar", :address=>"1260 Boylston St, Boston, MA 02215", :lat=>42.344855, :lng=>-71.095982, :number=>"(617) 424-1260", :website=>"http://sweetcarolinesboston.com/index.php", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"The Brick Yard", :address=>"1787 Union St, San Francisco, CA 94123", :lat=>37.797778, :lng=>-122.428645, :number=>"(415) 400-4712", :website=>"http://www.brickyardsf.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Route 92", :address=>"2128 S El Camino Real, San Mateo, CA 94403", :lat=>37.547124, :lng=>-122.308953, :number=>"(650) 312-1587", :website=>"http://www.yelp.com/biz/route-92-san-mateo", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"RFD Washington", :address=>"810 7th St NW, Washington, DC 20001", :lat=>38.900428, :lng=>-77.022292, :number=>"(202) 289-2030", :website=>"http://www.lovethebeer.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Tommy Joe's", :address=>"4714 Montgomery Lane, Bethesda, MD 20814", :lat=>38.983178, :lng=>-77.094427, :number=>"(301) 654-3801", :website=>"http://tommyjoes.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Pepperoni's Tavern", :address=>"4190 Old Milton Pkwy, Alpharetta, GA 30005", :lat=>34.059456, :lng=>-84.23442, :number=>"(770) 343-8228", :website=>"http://www.pepperonistavern.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Lodo's Bar and Grill", :address=>"1946 Market St, Denver, CO 80202", :lat=>39.753149, :lng=>-104.993571, :number=>"(303) 293-8555", :website=>"http://www.lodosbarandgrill.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"The Taco Shop @ Underdogs", :address=>"1824 Irving St, San Francisco, CA 94122", :lat=>37.763793, :lng=>-122.477691, :number=>"(415) 566-8700", :website=>"http://www.tacoshopsf.com/home/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Pluckers Wing Bar", :address=>"3909 S Lamar Blvd, Austin, TX 78704", :lat=>30.236409, :lng=>-97.790296, :number=>"(512) 443-9464", :website=>"http://www.pluckers.com/posts/location/south-lamar/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Diag Bar & Grill", :address=>"2856 N Southport Ave, Chicago, IL 60657", :lat=>41.934169, :lng=>-87.663785, :number=>"(773) 404-8400", :website=>"http://www.diagchicago.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Dos Gringos", :address=>"4209 N Craftsman Ct, Scottsdale, AZ 85251", :lat=>33.496973, :lng=>-111.927494, :number=>"(480) 423-3800", :website=>"http://www.dosgringosaz.com/index.php?page=scottsdale", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Cleveland Park Bar and Grill", :address=>"3421 Connecticut Ave NW, Washington, DC 20008", :lat=>38.935065, :lng=>-77.057696, :number=>"(202) 806-8940", :website=>"http://www.cpbargrill.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Wolf's 111 Restaurant & Games", :address=>"111 Wolf Rd, Colonie, NY 12205", :lat=>42.716585, :lng=>-73.808058, :number=>"(518) 275-0561", :website=>"http://www.wolfs111.com/index-111wolf_road.html", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Tavern On the Tracks", :address=>"1411 S Tryon St, Charlotte, NC 28203", :lat=>35.21698, :lng=>-80.854881, :number=>"(704) 372-0782", :website=>"http://www.urbanspoon.com/r/38/421811/restaurant/South-End/Tavern-on-the-Tracks-Charlotte", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Mezzanine Lounge", :address=>"2200 Southwest Fwy #150, Houston, TX 77098", :lat=>29.731632, :lng=>-95.413636, :number=>"(713) 528-6399", :website=>"http://www.mezzaninelounge.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Rockit Bar & Grill", :address=>"22 W Hubbard St, Chicago, IL 60654", :lat=>41.890308, :lng=>-87.628954, :number=>"(312) 645-6000", :website=>"http://rockitbarandgrill.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Incredible Mo's", :address=>"1355 Silver Lake Crossings Boulevard, Grawn, MI 49637", :lat=>44.666844, :lng=>-85.684594, :number=>"(231) 944-1355", :website=>"http://incrediblemos.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Rockit Burger Bar", :address=>"3700 N Clark St, Chicago, IL 60613", :lat=>41.949128, :lng=>-87.658354, :number=>"(773) 645-4400", :website=>"http://www.rockitburgerbar.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Thirsty Lion Pub & Grill - Downtown", :address=>"71 SW 2nd Ave, Portland, OR 97204", :lat=>45.522244, :lng=>-122.672443, :number=>"(503) 222-2155", :website=>"http://www.thirstylionpub.com/portland/directions", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Tustin Brewing Co", :address=>"13011 Newport Avenue #100, Tustin, CA 92780", :lat=>33.749897, :lng=>-117.811278, :number=>"(714) 665-2337", :website=>"http://tustinbrewery.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Jackson's Hole Bar & Grill", :address=>"106 N 3rd St, Minneapolis, MN 55401", :lat=>44.982369, :lng=>-93.271504, :number=>"(612) 343-5930", :website=>"http://jacksonsholempls.com/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"Triona's on third", :address=>"192 3rd Ave, New York, NY 10003", :lat=>40.735544, :lng=>-73.985956, :number=>"(646) 448-4671", :website=>"http://www.trionasnyc.com/home/third-ave/welcome/", :alumni=>"TRUE", :loyalty=>"University of Michigan", :notes=>nil})
+Bar.create({:name=>"The Hill", :address=>"416 3rd Ave, New York, NY 10016", :lat=>40.743075, :lng=>-73.980376, :number=>"(212) 481-1712", :website=>"http://www.thehillny.com/", :alumni=>"FALSE", :loyalty=>"University of Michigan", :notes=>nil})
