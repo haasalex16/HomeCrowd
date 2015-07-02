@@ -8,7 +8,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   initialize: function () {
     this.geocoder = new google.maps.Geocoder();
-    this.markers = []
+    this.markers = [];
+    this.infowindow = new google.maps.InfoWindow({});
   },
 
   render: function() {
@@ -42,7 +43,13 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     });
     var marker = new google.maps.Marker({
         map: this.map,
-        // icon: 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/130.png&w=80&h=80&transparent=true',
+        icon: {
+          url: 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/130.png&w=80&h=80&transparent=true',
+          scaledSize: {
+            width: 30,
+            height: 30
+          }
+        },
         // icon: 'images/mich.png',
         position: myLatlng,
         animation:  google.maps.Animation.DROP,
@@ -50,8 +57,10 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.markers.push(marker);
 
     google.maps.event.addListener(marker, 'click', function() {
+      this.infowindow.close();
       infowindow.open(this.map, marker);
-    });
+      this.infowindow = infowindow;
+    }.bind(this));
   },
 
   showMap: function() {
