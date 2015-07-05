@@ -16,7 +16,7 @@
 
 
 html, body, h1, h2, nav, a, section,
-header, ul, li, p, input, button, main,
+header, ul, li, img, p, input, button, main,
 form {
  margin: 0;
  padding: 0;
@@ -48,4 +48,8 @@ ul {
  width: 100%;
  margin: 0;
  padding: 0;
+}
+
+img {
+  height: 50px;
 }

@@ -2,6 +2,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   template: JST['home/show'],
 
   events: {
+    'click #addB10Markers': 'addB10',
     'click #addUMMarkers': 'addUM',
     'click #addIUMarkers': 'addIU',
     'click #addUIMarkers': 'addUI',
@@ -20,53 +21,15 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addB10: function() {
-    this.collection.forEach( function (model) {
+    this.removeMarkers();
+    this.collection.where({league: 'B10'}).forEach(function(model) {
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      switch (model.get('loyalty')) {
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Wisconsin":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/275.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Nebraska":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/158.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Maryland":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/120.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Iowa":
-          cvar image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2294.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-        case "University of Minnesota":
-          var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
-          break;
-      }
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
-    })
+    }.bind(this))
+
   },
 
   addMINN: function () {
@@ -75,7 +38,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/135.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -86,7 +49,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/275.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -97,7 +60,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/158.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
     // var markerCluster = new MarkerClusterer(this.map, this.markers, {styles: [{textColor: 'red'}]});
@@ -109,7 +72,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/120.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -120,7 +83,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2294.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -131,7 +94,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/164.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -142,7 +105,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2509.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -153,7 +116,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/213.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -164,7 +127,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/194.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -175,7 +138,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/77.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -186,7 +149,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/127.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -217,7 +180,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/84.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -228,7 +191,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/130.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
@@ -239,7 +202,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       var contentString = "<div>" + model.get('name') + "</div>"
       var lat = model.get('lat');
       var lng = model.get('lng');
-      var image_url = 'http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/356.png&w=80&h=80&transparent=true';
+      var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
   },
