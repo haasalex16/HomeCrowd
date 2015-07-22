@@ -19,39 +19,67 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addUNMarkers': 'addUN',
     'click #addUWMarkers': 'addUW',
     'click #addMINNMarkers': 'addMINN',
-    'click #removeMarkers': 'removeMarkers'
+    'click #logo': 'home'
+  },
+
+  initialize: function () {
+    this.geocoder = new google.maps.Geocoder();
+    this.markers = [];
+    this.infowindow = new google.maps.InfoWindow({});
+  },
+
+  render: function() {
+    var view = this.template();
+    this.$el.html(view);
+    this.showMap();
+    return this;
+  },
+
+  removeMarkers: function () {
+    for (var i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(null);
+    }
+    this.markers = [];
+  },
+
+  home: function() {
+    this.removeMarkers();
+    this.$('.NFL_logos').removeClass('show');
+    this.$('.b10_logos').removeClass('show');
+    this.$('.MLB_logos').removeClass('show');
   },
 
   addNFL: function() {
-    this.$('.NFL_logos').addClass('show');
+    this.removeMarkers();
+    this.$('.NFL_logos').removeClass('show');
     this.$('.b10_logos').removeClass('show');
     this.$('.MLB_logos').removeClass('show');
+    this.$('.NFL_logos').addClass('show');
 
-    this.removeMarkers();
-    this.collection.where({league: 'NFL'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
-
+    this.addLeagueMarkers('NFL');
   },
 
   addMLB: function() {
-    this.$('.MLB_logos').addClass('show');
+    this.removeMarkers();
     this.$('.NFL_logos').removeClass('show');
     this.$('.b10_logos').removeClass('show');
-    this.removeMarkers();
+    this.$('.MLB_logos').removeClass('show');
+    this.$('.MLB_logos').addClass('show');
   },
 
   addB10: function() {
     this.removeMarkers();
-    this.$('.b10_logos').addClass('show');
-    this.$('.MLB_logos').removeClass('show');
     this.$('.NFL_logos').removeClass('show');
+    this.$('.b10_logos').removeClass('show');
+    this.$('.MLB_logos').removeClass('show');
+    this.$('.b10_logos').addClass('show');
 
-    this.collection.where({league: 'B10'}).forEach(function(model) {
+    this.addLeagueMarkers('B10');
+  },
+
+  addLeagueMarkers: function(league) {
+
+    this.collection.where({league: league}).forEach(function(model) {
       var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
@@ -77,179 +105,71 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     return contentString;
   },
 
-  addMINN: function () {
+  addLoyaltyMarkers: function (loyalty) {
     this.removeMarkers();
-    this.collection.where({loyalty: 'University of Minnesota'}).forEach(function(model) {
+    this.collection.where({loyalty: loyalty}).forEach(function(model) {
       var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
       this.addMarker(lat, lng, contentString, image_url);
     }.bind(this))
+  },
+
+  addMINN: function () {
+    this.addLoyaltyMarkers('University of Minnesota');
   },
 
   addUW: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'University of Wisconsin'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('University of Wisconsin');
   },
 
   addUN: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'University of Nebraska'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
-    // var markerCluster = new MarkerClusterer(this.map, this.markers, {styles: [{textColor: 'red'}]});
+    this.addLoyaltyMarkers('University of Nebraska');
   },
 
   addMD: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'University of Maryland'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('University of Maryland');
   },
 
   addIOWA: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'University of Iowa'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('University of Iowa');
   },
 
   addR: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'Rutgers'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('Rutgers');
   },
 
   addPU: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'Purdue University'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('Purdue University');
   },
 
   addPSU: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'Penn State University'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('Penn State University');
   },
 
   addOSU: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'Ohio State University'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('Ohio State University');
   },
 
   addNU: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'Northwestern University'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('Northwestern University');
   },
 
   addMSU: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'Michigan State University'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
-  },
-
-  initialize: function () {
-    this.geocoder = new google.maps.Geocoder();
-    this.markers = [];
-    this.infowindow = new google.maps.InfoWindow({});
-  },
-
-  render: function() {
-    var view = this.template();
-    this.$el.html(view);
-    this.showMap();
-    return this;
-  },
-
-  removeMarkers: function () {
-    for (var i = 0; i < this.markers.length; i++) {
-      this.markers[i].setMap(null);
-    }
-    this.markers = [];
+    this.addLoyaltyMarkers('Michigan State University');
   },
 
   addIU: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'University of Indiana'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('University of Indiana');
   },
 
   addUM: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'University of Michigan'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('University of Michigan');
   },
 
   addUI: function () {
-    this.removeMarkers();
-    this.collection.where({loyalty: 'University of Illinois'}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+    this.addLoyaltyMarkers('University of Illinois');
   },
 
   addMarker: function (lat, lng, contentString, image_url) {
