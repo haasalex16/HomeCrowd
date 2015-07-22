@@ -3,6 +3,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   events: {
     'click #addB10Markers': 'addB10',
+    'click #addNFLMarkers': 'addMLB',
     'click #addUMMarkers': 'addUM',
     'click #addIUMarkers': 'addIU',
     'click #addUIMarkers': 'addUI',
@@ -20,10 +21,10 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #removeMarkers': 'removeMarkers'
   },
 
-  addB10: function() {
+  addMLB: function() {
     this.removeMarkers();
-    this.collection.where({league: 'B10'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+    this.collection.where({league: 'NFL'}).forEach(function(model) {
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -32,10 +33,41 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   },
 
+  addB10: function() {
+    this.removeMarkers();
+    this.$('.b10_logos').addClass('show');
+    this.$('#map-canvas').addClass('show');
+
+    this.collection.where({league: 'B10'}).forEach(function(model) {
+      var contentString = this.createContentString(model);
+      var lat = model.get('lat');
+      var lng = model.get('lng');
+      var image_url = model.get('icon');
+      this.addMarker(lat, lng, contentString, image_url);
+    }.bind(this))
+
+  },
+
+  createContentString: function(model) {
+    var contentString = "<div>";
+    if (model.get('hc_verified')) {
+      var verified = '<img id="verified_logo" src="http://www.sanfrancisco.com/images/common/icon_verified.jpg" alt="" />';
+      contentString = contentString.concat(verified);
+    };
+    contentString = contentString.concat("<p>" +
+                        model.get('name') +
+                        "</p><p>" +
+                        model.get('address') +
+                        "</p><p>" +
+                        model.get('number') +
+                        "</p></div>");
+    return contentString;
+  },
+
   addMINN: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'University of Minnesota'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -46,7 +78,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addUW: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'University of Wisconsin'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -57,7 +89,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addUN: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'University of Nebraska'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -69,7 +101,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addMD: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'University of Maryland'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -80,7 +112,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addIOWA: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'University of Iowa'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -91,7 +123,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addR: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'Rutgers'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -102,7 +134,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addPU: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'Purdue University'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -113,7 +145,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addPSU: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'Penn State University'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -124,7 +156,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addOSU: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'Ohio State University'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -135,7 +167,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addNU: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'Northwestern University'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -146,7 +178,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addMSU: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'Michigan State University'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -177,7 +209,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addIU: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'University of Indiana'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -188,7 +220,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addUM: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'University of Michigan'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -199,7 +231,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addUI: function () {
     this.removeMarkers();
     this.collection.where({loyalty: 'University of Illinois'}).forEach(function(model) {
-      var contentString = "<div>" + model.get('name') + "</div>"
+      var contentString = this.createContentString(model);
       var lat = model.get('lat');
       var lng = model.get('lng');
       var image_url = model.get('icon');
@@ -216,7 +248,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
         animation:  google.maps.Animation.DROP,
         map: this.map,
         icon: {
-          url: image_url,
+          url: image_url + "&w=30&h=30",
           scaledSize: {
             width: 30,
             height: 30
@@ -236,7 +268,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   showMap: function() {
     mapOptions = {
-      center: { lat: 40.737025, lng: -73.987783},
+
+      center: { lat: 40.775273, lng: -73.973041},
       zoom: 12,
       styles: [
         {
@@ -262,7 +295,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
           "featureType": "landscape",
           "elementType": "geometry",
           "stylers": [
-            { "color": "#808080" }
+            { "color": "#c3c3c3" }
           ]
         },{
           "featureType": "transit.line",
