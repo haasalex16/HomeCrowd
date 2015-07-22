@@ -19,7 +19,39 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addUNMarkers': 'addUN',
     'click #addUWMarkers': 'addUW',
     'click #addMINNMarkers': 'addMINN',
-    'click #logo': 'home'
+    'click #logo': 'home',
+    'click #addNFLbalMarkers': 'addNFLbal',
+    'click #addNFLbufMarkers': 'addNFLbuf',
+    'click #addNFLcinMarkers': 'addNFLcin',
+    'click #addNFLcleMarkers': 'addNFLcle',
+    'click #addNFLdenMarkers': 'addNFLden',
+    'click #addNFLhouMarkers': 'addNFLhou',
+    'click #addNFLindMarkers': 'addNFLind',
+    'click #addNFLjaxMarkers': 'addNFLjax',
+    'click #addNFLkcMarkers': 'addNFLkc',
+    'click #addNFLmaiMarkers': 'addNFLmia',
+    'click #addNFLneMarkers': 'addNFLne',
+    'click #addNFLnyjMarkers': 'addNFLnyj',
+    'click #addNFLoakMarkers': 'addNFLoak',
+    'click #addNFLpitMarkers': 'addNFLpit',
+    'click #addNFLsdMarkers': 'addNFLsd',
+    'click #addNFLtenMarkers': 'addNFLten',
+    'click #addNFLariMarkers': 'addNFLari',
+    'click #addNFLatlMarkers': 'addNFLatl',
+    'click #addNFLcarMarkers': 'addNFLcar',
+    'click #addNFLchiMarkers': 'addNFLchi',
+    'click #addNFLdalMarkers': 'addNFLdal',
+    'click #addNFLdetMarkers': 'addNFLdet',
+    'click #addNFLgbMarkers': 'addNFLgb',
+    'click #addNFLminMarkers': 'addNFLmin',
+    'click #addNFLnoMarkers': 'addNFLno',
+    'click #addNFLnygMarkers': 'addNFLnyg',
+    'click #addNFLphiMarkers': 'addNFLphi',
+    'click #addNFLstlMarkers': 'addNFLstl',
+    'click #addNFLsfMarkers': 'addNFLsf',
+    'click #addNFLseaMarkers': 'addNFLsea',
+    'click #addNFLtbMarkers': 'addNFLtb',
+    'click #addNFLwshMarkers': 'addNFLwsh',
   },
 
   initialize: function () {
@@ -172,6 +204,105 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.addLoyaltyMarkers('University of Illinois');
   },
 
+
+  addNFLbal: function () {
+    this.addLoyaltyMarkers('Baltimore Ravens');
+  },
+  addNFLbuf: function () {
+    this.addLoyaltyMarkers('Buffalo Bills');
+  },
+  addNFLcin: function () {
+    this.addLoyaltyMarkers('Cincinnati Bengals');
+  },
+  addNFLcle: function () {
+    this.addLoyaltyMarkers('Cleveland Browns');
+  },
+  addNFLden: function () {
+    this.addLoyaltyMarkers('Denver Broncos');
+  },
+  addNFLhou: function () {
+    this.addLoyaltyMarkers('Houston Texans');
+  },
+  addNFLind: function () {
+    this.addLoyaltyMarkers('Indianapolis Colts');
+  },
+  addNFLjax: function () {
+    this.addLoyaltyMarkers('Jacksonville Jaguars');
+  },
+  addNFLkc: function () {
+    this.addLoyaltyMarkers('Kansas City Chiefs');
+  },
+  addNFLmia: function () {
+    this.addLoyaltyMarkers('Miami Dolphins');
+  },
+  addNFLne: function () {
+    this.addLoyaltyMarkers('New England Patriots');
+  },
+  addNFLnyj: function () {
+    this.addLoyaltyMarkers('New York Jets');
+  },
+  addNFLoak: function () {
+    this.addLoyaltyMarkers('Oakland Raiders');
+  },
+  addNFLpit: function () {
+    this.addLoyaltyMarkers('Pittsburgh Steelers');
+  },
+  addNFLsd: function () {
+    this.addLoyaltyMarkers('San Diego Chargers');
+  },
+  addNFLten: function () {
+    this.addLoyaltyMarkers('Tennessee Titans');
+  },
+  addNFLari: function () {
+    this.addLoyaltyMarkers('Arizona Cardinals');
+  },
+  addNFLatl: function () {
+    this.addLoyaltyMarkers('Atlanta Falcons');
+  },
+  addNFLcar: function () {
+    this.addLoyaltyMarkers('Carolina Panthers');
+  },
+  addNFLchi: function () {
+    this.addLoyaltyMarkers('Chicago Bears');
+  },
+  addNFLdal: function () {
+    this.addLoyaltyMarkers('Dallas Cowboys');
+  },
+  addNFLdet: function () {
+    this.addLoyaltyMarkers('Detroit Lions');
+  },
+  addNFLgb: function () {
+    this.addLoyaltyMarkers('Green Bay Packers');
+  },
+  addNFLmin: function () {
+    this.addLoyaltyMarkers('Minnesota Vikings');
+  },
+  addNFLno: function () {
+    this.addLoyaltyMarkers('New Orleans Saints');
+  },
+  addNFLnyg: function () {
+    this.addLoyaltyMarkers('New York Giants');
+  },
+  addNFLphi: function () {
+    this.addLoyaltyMarkers('Philadelphia Eagles');
+  },
+  addNFLstl: function () {
+    this.addLoyaltyMarkers('St. Louis Rams');
+  },
+  addNFLsf: function () {
+    this.addLoyaltyMarkers('San Francisco 49ers');
+  },
+  addNFLsea: function () {
+    this.addLoyaltyMarkers('Seattle Seahawks');
+  },
+  addNFLtb: function () {
+    this.addLoyaltyMarkers('Tampa Bay Buccaneers');
+  },
+  addNFLwsh: function () {
+    this.addLoyaltyMarkers('Washington Redskins');
+  },
+
+
   addMarker: function (lat, lng, contentString, image_url) {
     var myLatlng = new google.maps.LatLng(lat,lng);
     var infowindow = new google.maps.InfoWindow({
@@ -247,6 +378,22 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.map.controls[google.maps.ControlPosition.TOP_LEFT].push($input);
     //
     var searchBox = new google.maps.places.SearchBox(($input));
+
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+      var places = searchBox.getPlaces();
+      console.log(places);
+      if (places.length == 0) {
+        return;
+      }
+
+      var bounds = new google.maps.LatLngBounds();
+      bounds.extend(places[0].geometry.location);
+      this.map.fitBounds(bounds);
+      this.map.setZoom(12);
+
+
+    }.bind(this));
+
   }
 
 });
