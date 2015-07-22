@@ -319,8 +319,14 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
       ]
 
     };
+
     $canvas = this.$('#map-canvas')[0];
     this.map = new google.maps.Map($canvas, mapOptions);
+
+    $input = this.$('#pac-input')[0];
+    this.map.controls[google.maps.ControlPosition.TOP_LEFT].push($input);
+    //
+    var searchBox = new google.maps.places.SearchBox(($input));
   }
 
 });

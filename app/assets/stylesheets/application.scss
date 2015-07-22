@@ -63,6 +63,7 @@ ul {
 .header-icon {
   width: 40px;
   padding: 5px;
+  cursor: pointer;
 }
 
 nav {
@@ -76,7 +77,6 @@ header {
   background: #C3C3C3;
   width: 100%;
   height: 50px;
-  margin-bottom: 20px;
   z-index: 5;
 }
 
@@ -100,17 +100,14 @@ header {
 #map-canvas {
   position: relative;
   height: 500px;
-  width: calc(90%);
-  margin: 0;
-  padding: 0;
-  float: left;
-  transition: left 1s;
+  width: calc(99%);
+  margin: auto;
 }
 .b10_logos, .NFL_logos, .MLB_logos {
   z-index: 1;
   position: absolute;
   left: 50%;
-  top: -40px;
+  top: -30px;
   transform: translateX(-50%);
   margin: auto;
   background: #eeeeee;
@@ -131,12 +128,28 @@ header {
 
 .logo_group {
   position: relative;
-  height: 30px;
-  top: -15px;
+  height: 50px;
 }
 
 .show {
   z-index: 2;
-  top: 0px;
+  top: 5px;
   transition: top 1.5s;
+}
+
+// search box
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
 }
