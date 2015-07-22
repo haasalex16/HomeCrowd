@@ -4,6 +4,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   events: {
     'click #addB10Markers': 'addB10',
     'click #addNFLMarkers': 'addNFL',
+    'click #addMLBMarkers': 'addMLB',
     'click #addUMMarkers': 'addUM',
     'click #addIUMarkers': 'addIU',
     'click #addUIMarkers': 'addUI',
@@ -24,6 +25,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addNFL: function() {
     this.$('.NFL_logos').addClass('show');
     this.$('.b10_logos').removeClass('show');
+    this.$('.MLB_logos').removeClass('show');
+
     this.removeMarkers();
     this.collection.where({league: 'NFL'}).forEach(function(model) {
       var contentString = this.createContentString(model);
@@ -35,9 +38,17 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   },
 
+  addMLB: function() {
+    this.$('.MLB_logos').addClass('show');
+    this.$('.NFL_logos').removeClass('show');
+    this.$('.b10_logos').removeClass('show');
+    this.removeMarkers();
+  },
+
   addB10: function() {
     this.removeMarkers();
     this.$('.b10_logos').addClass('show');
+    this.$('.MLB_logos').removeClass('show');
     this.$('.NFL_logos').removeClass('show');
 
     this.collection.where({league: 'B10'}).forEach(function(model) {

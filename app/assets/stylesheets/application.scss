@@ -72,6 +72,7 @@ nav {
 }
 
 header {
+  position: relative;
   background: #C3C3C3;
   width: 100%;
   height: 50px;
@@ -83,6 +84,11 @@ header {
   width: 30px;
   height: 30px;
   float: left;
+}
+
+.logo:hover {
+  background: #aaaaaa;
+  cursor: pointer;
 }
 
 .white {
@@ -100,14 +106,14 @@ header {
   float: left;
   transition: left 1s;
 }
-.b10_logos, .NFL_logos {
-  z-index: -2;
+.b10_logos, .NFL_logos, .MLB_logos {
+  z-index: 1;
   position: absolute;
   left: 50%;
   top: -40px;
   transform: translateX(-50%);
   margin: auto;
-  background: #aaaaaa;
+  background: #eeeeee;
   transition: top 1.5s;
 }
 
@@ -116,7 +122,11 @@ header {
 }
 
 .NFL_logos {
-  width: 580px;
+  width: 1020px;
+}
+
+.MLB_logos {
+  width: 960px;
 }
 
 .logo_group {
@@ -126,7 +136,7 @@ header {
 }
 
 .show {
-  z-index: -1;
+  z-index: 2;
   top: 0px;
   transition: top 1.5s;
 }
