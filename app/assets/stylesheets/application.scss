@@ -68,6 +68,7 @@ ul {
 nav {
   width: 269px;
   margin: auto;
+  z-index: 5;
 }
 
 header {
@@ -75,30 +76,57 @@ header {
   width: 100%;
   height: 50px;
   margin-bottom: 20px;
+  z-index: 5;
 }
 
 .logo {
+  width: 30px;
   height: 30px;
+  float: left;
+}
+
+.white {
+  width: 60px;
+  height: 30px;
+  float: left;
 }
 
 #map-canvas {
   position: relative;
-  left: -30px;
-   height: 500px;
-   width: calc(100% - 80px);
-   margin: 0;
-   padding: 0;
-   float: left;
+  height: 500px;
+  width: calc(90%);
+  margin: 0;
+  padding: 0;
+  float: left;
   transition: left 1s;
 }
+.b10_logos, .NFL_logos {
+  z-index: -2;
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transform: translateX(-50%);
+  margin: auto;
+  background: #aaaaaa;
+  transition: top 1.5s;
+}
+
 .b10_logos {
+  width: 480px;
+}
+
+.NFL_logos {
+  width: 580px;
+}
+
+.logo_group {
   position: relative;
-  left: -30px;
-  transition: left 1s;
-  width: 40px;
-  float: left;
+  height: 30px;
+  top: -15px;
 }
 
 .show {
-  left: 0 !important;
+  z-index: -1;
+  top: 0px;
+  transition: top 1.5s;
 }
