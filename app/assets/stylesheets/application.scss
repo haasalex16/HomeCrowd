@@ -43,6 +43,12 @@ ul {
  clear: both;
 }
 
+// body
+
+body {
+  background: #E9E0D6;
+}
+
 // header
 #logo {
   border: 2px solid #222;
@@ -74,7 +80,7 @@ nav {
 }
 
 header {
-  background: #222;
+  background: #354458;
   position: relative;
   width: 100%;
   height: 50px;
@@ -90,7 +96,7 @@ header {
 }
 
 .nav-ul li:hover > img {
-  background: #c3c3c3;
+  background: #4298B5;
 }
 
 .nav-ul li:hover > .dropdown {
@@ -117,6 +123,8 @@ header {
 .logo:hover {
   background: #aaaaaa;
   cursor: pointer;
+  border-radius: 5px;
+
 }
 
 .white {
@@ -144,7 +152,7 @@ header {
   left: 2%;
   width: 96%;
   transition: width 1s, left 1s;
-  background: red;
+  background: #C3C3C3;
   overflow: hidden;
 }
 
@@ -169,19 +177,20 @@ header {
   overflow: scroll;
   font-family: Roboto;
   transition: left 1s;
-  background: white;
+  background: #C3C3C3;
 }
 
 #active-bars li {
   border: 1px solid black;
+  cursor: pointer;
 }
 
 .active {
-  background: #c3c3c3;
+  background: #EB7260;
 }
 
 #active-bars li:hover {
-  background: #eee;
+  background: #E9E0D6;
 }
 
 .b10_logos, .NFL_logos, .MLB_logos {
@@ -191,8 +200,9 @@ header {
   top: -30px;
   transform: translateX(-50%);
   margin: auto;
-  background: #eeeeee;
+  background: #29ABA4;
   transition: top 1.5s;
+  border-radius: 5px;
 }
 
 .b10_logos {
