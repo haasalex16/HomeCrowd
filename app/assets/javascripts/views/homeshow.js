@@ -95,7 +95,6 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addNFL: function() {
-    this.removeMarkers();
     this.$('.NFL_logos').removeClass('show');
     this.$('.b10_logos').removeClass('show');
     this.$('.MLB_logos').removeClass('show');
@@ -105,15 +104,15 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addMLB: function() {
-    this.removeMarkers();
     this.$('.NFL_logos').removeClass('show');
     this.$('.b10_logos').removeClass('show');
     this.$('.MLB_logos').removeClass('show');
     this.$('.MLB_logos').addClass('show');
+
+    this.addLeagueMarkers('MLB');
   },
 
   addB10: function() {
-    this.removeMarkers();
     this.$('.NFL_logos').removeClass('show');
     this.$('.b10_logos').removeClass('show');
     this.$('.MLB_logos').removeClass('show');
@@ -123,6 +122,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addLeagueMarkers: function(league) {
+    this.removeMarkers();
+    this.activeMarker = null;
     this.collection.where({league: league}).forEach(function(model) {
       this.addMarker(model);
     }.bind(this));
@@ -146,6 +147,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addLoyaltyMarkers: function (loyalty) {
+    this.activeMarker = null;
+
     this.removeMarkers();
     this.collection.where({loyalty: loyalty}).forEach(function(model) {
       this.addMarker(model);
@@ -430,10 +433,9 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
         var $info = $(info);
         $info.attr('id',i).addClass("barInfo")
-        // $info.bind( "click", function() {
-        //   var id = $info.attr('id')
-        //   alert( "User clicked " + id);
-        // });
+        if (this.activeMarker == i) {
+          $info.addClass('active');
+        }
         $activeBars.append($info)
       }
     }
