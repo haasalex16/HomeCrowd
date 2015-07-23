@@ -52,7 +52,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addNFLseaMarkers': 'addNFLsea',
     'click #addNFLtbMarkers': 'addNFLtb',
     'click #addNFLwshMarkers': 'addNFLwsh',
-    'click .barInfo': 'activeBar'
+    'click .barInfo': 'getActiveID'
   },
 
   initialize: function () {
@@ -69,15 +69,18 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     return this;
   },
 
-  activeBar: function (el) {
+  activeBar: function (id) {
     if (this.activeMarker) {
       this.markers[this.activeMarker][0].setAnimation(null);
       this.$('#'+this.activeMarker).removeClass('active');
     }
-    this.$('#'+el.target.parentElement.id).addClass('active');
-    this.activeMarker = el.target.parentElement.id
+    this.$('#'+id).addClass('active');
+    this.activeMarker = id;
     this.markers[this.activeMarker][0].setAnimation(google.maps.Animation.BOUNCE);
-    console.log(el.target.parentElement.id);
+  },
+
+  getActiveID: function (el) {
+    this.activeBar(el.target.parentElement.id);
   },
 
   removeMarkers: function () {
@@ -124,8 +127,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addLeagueMarkers: function(league) {
     this.removeMarkers();
     this.activeMarker = null;
-    this.collection.where({league: league}).forEach(function(model) {
-      this.addMarker(model);
+    this.collection.where({league: league}).forEach(function(model, idx) {
+      this.addMarker(model, idx);
     }.bind(this));
     this.updateSidebar();
   },
@@ -150,8 +153,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.activeMarker = null;
 
     this.removeMarkers();
-    this.collection.where({loyalty: loyalty}).forEach(function(model) {
-      this.addMarker(model);
+    this.collection.where({loyalty: loyalty}).forEach(function(model, idx) {
+      this.addMarker(model, idx);
     }.bind(this));
 
     this.updateSidebar();
@@ -311,7 +314,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.addLoyaltyMarkers('Washington Redskins');
   },
 
-  addMarker: function (model) {
+  addMarker: function (model, idx) {
     var contentString = this.createContentString(model);
     var lat = model.get('lat');
     var lng = model.get('lng');
@@ -336,9 +339,14 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.markers.push([marker, model]);
 
     google.maps.event.addListener(marker, 'click', function() {
-      this.infowindow.close();
-      infowindow.open(this.map, marker);
-      this.infowindow = infowindow;
+      console.log(idx);
+      $('#active-bars').scrollTop(0);
+      this.activeBar(idx);
+      $('#active-bars').scrollTop($('#'+idx).position().top - 100);
+
+      // this.infowindow.close();
+      // infowindow.open(this.map, marker);
+      // this.infowindow = infowindow;
     }.bind(this));
   },
 
