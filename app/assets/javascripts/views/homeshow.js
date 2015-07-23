@@ -70,13 +70,14 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   activeBar: function (id) {
-    if (this.activeMarker) {
+    if (this.activeMarker != null) {
       this.markers[this.activeMarker][0].setAnimation(null);
       this.$('#'+this.activeMarker).removeClass('active');
     }
     this.$('#'+id).addClass('active');
     this.activeMarker = id;
     this.markers[this.activeMarker][0].setAnimation(google.maps.Animation.BOUNCE);
+    console.log(this.activeMarker);
   },
 
   getActiveID: function (el) {
