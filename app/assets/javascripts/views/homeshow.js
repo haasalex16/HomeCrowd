@@ -55,8 +55,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   initialize: function () {
-    this.geocoder = new google.maps.Geocoder();
     this.markers = [];
+    this.geocoder = new google.maps.Geocoder();
     this.infowindow = new google.maps.InfoWindow({});
   },
 
@@ -69,7 +69,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   removeMarkers: function () {
     for (var i = 0; i < this.markers.length; i++) {
-      this.markers[i].setMap(null);
+      this.markers[i][0].setMap(null);
     }
     this.markers = [];
   },
@@ -110,15 +110,10 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addLeagueMarkers: function(league) {
-
     this.collection.where({league: league}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
-
+      this.addMarker(model);
+    }.bind(this));
+    this.updateSidebar();
   },
 
   createContentString: function(model) {
@@ -140,12 +135,11 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addLoyaltyMarkers: function (loyalty) {
     this.removeMarkers();
     this.collection.where({loyalty: loyalty}).forEach(function(model) {
-      var contentString = this.createContentString(model);
-      var lat = model.get('lat');
-      var lng = model.get('lng');
-      var image_url = model.get('icon');
-      this.addMarker(lat, lng, contentString, image_url);
-    }.bind(this))
+      this.addMarker(model);
+    }.bind(this));
+
+    this.updateSidebar();
+
   },
 
   addMINN: function () {
@@ -203,7 +197,6 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addUI: function () {
     this.addLoyaltyMarkers('University of Illinois');
   },
-
 
   addNFLbal: function () {
     this.addLoyaltyMarkers('Baltimore Ravens');
@@ -302,8 +295,12 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.addLoyaltyMarkers('Washington Redskins');
   },
 
+  addMarker: function (model) {
+    var contentString = this.createContentString(model);
+    var lat = model.get('lat');
+    var lng = model.get('lng');
+    var image_url = model.get('icon');
 
-  addMarker: function (lat, lng, contentString, image_url) {
     var myLatlng = new google.maps.LatLng(lat,lng);
     var infowindow = new google.maps.InfoWindow({
         content: contentString
@@ -318,10 +315,9 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
             height: 30
           }
         },
-        // icon: 'images/mich.png',
         position: myLatlng,
     });
-    this.markers.push(marker);
+    this.markers.push([marker, model]);
 
     google.maps.event.addListener(marker, 'click', function() {
       this.infowindow.close();
@@ -377,23 +373,36 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     $input = this.$('#pac-input')[0];
     this.map.controls[google.maps.ControlPosition.TOP_LEFT].push($input);
     //
-    var searchBox = new google.maps.places.SearchBox(($input));
+    var searchBox = new google.maps.places.Autocomplete(($input));
+    searchBox.setTypes(['geocode']);
 
-    google.maps.event.addListener(searchBox, 'places_changed', function() {
-      var places = searchBox.getPlaces();
-      console.log(places);
-      if (places.length == 0) {
-        return;
-      }
+    google.maps.event.addListener(searchBox, 'place_changed', function() {
+      var place = searchBox.getPlace();
 
       var bounds = new google.maps.LatLngBounds();
-      bounds.extend(places[0].geometry.location);
+      bounds.extend(place.geometry.location);
       this.map.fitBounds(bounds);
       this.map.setZoom(12);
 
-
     }.bind(this));
 
+    // update bars info sidebar
+
+    google.maps.event.addListener(this.map, 'bounds_changed', function() {
+      this.updateSidebar();
+    }.bind(this));
+
+  },
+
+  updateSidebar: function () {
+    var $activeBars = $('#active-bars');
+    $activeBars.html("");
+    for (var i=0; i < this.markers.length; i++){
+      if( this.map.getBounds().contains(this.markers[i][0].getPosition()) ){
+        console.log(this.markers[i][1].get('name'));
+        $activeBars.append("<li>" + this.markers[i][1].get('name') + "</li>")
+      }
+    }
   }
 
 });

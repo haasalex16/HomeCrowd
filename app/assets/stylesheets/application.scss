@@ -129,9 +129,19 @@ header {
 #map-canvas {
   position: relative;
   height: 500px;
-  width: calc(99%);
+  width: calc(60%);
   margin: auto;
+  float: left;
 }
+
+#active-bars {
+  float: left;
+  width: 30%;
+  height: 500px;
+  border: 1px solid black;
+
+}
+
 .b10_logos, .NFL_logos, .MLB_logos {
   z-index: 1;
   position: absolute;
@@ -173,10 +183,11 @@ header {
   font-family: Roboto;
   font-size: 15px;
   font-weight: 300;
-  margin-left: 12px;
+  margin: 12px;
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
   width: 400px;
+  top: 10px;
 }
 
 #pac-input:focus {
