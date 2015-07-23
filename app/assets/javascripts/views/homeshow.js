@@ -71,10 +71,12 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   activeBar: function (el) {
     if (this.activeMarker) {
-      this.activeMarker.setAnimation(null);
+      this.markers[this.activeMarker][0].setAnimation(null);
+      this.$('#'+this.activeMarker).removeClass('active');
     }
-    this.activeMarker = this.markers[el.target.parentElement.id][0]
-    this.activeMarker.setAnimation(google.maps.Animation.BOUNCE);
+    this.$('#'+el.target.parentElement.id).addClass('active');
+    this.activeMarker = el.target.parentElement.id
+    this.markers[this.activeMarker][0].setAnimation(google.maps.Animation.BOUNCE);
     console.log(el.target.parentElement.id);
   },
 

@@ -129,7 +129,7 @@ header {
 #map-canvas {
   position: relative;
   height: 500px;
-  width: calc(60%);
+  width: calc(68%);
   margin: auto;
   float: left;
 }
@@ -140,10 +140,15 @@ header {
   height: 500px;
   border: 1px solid black;
   overflow: scroll;
+  font-family: Roboto;
 }
 
 #active-bars li {
   border: 1px solid black;
+}
+
+.active {
+  background: #c3c3c3;
 }
 
 #active-bars li:hover {
