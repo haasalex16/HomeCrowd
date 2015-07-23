@@ -92,6 +92,11 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   home: function() {
+
+    $('#active-bars').html("");
+    $('#map-canvas').addClass('hide-map');
+    $('#active-bars').addClass('hide-sidebar');
+
     this.removeMarkers();
     this.$('.NFL_logos').removeClass('show');
     this.$('.b10_logos').removeClass('show');
@@ -126,6 +131,9 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addLeagueMarkers: function(league) {
+    $('#map-canvas').removeClass('hide-map');
+    $('#active-bars').removeClass('hide-sidebar');
+
     this.removeMarkers();
     this.activeMarker = null;
     this.collection.where({league: league}).forEach(function(model, idx) {
@@ -151,6 +159,9 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addLoyaltyMarkers: function (loyalty) {
+
+    $('#map-canvas').removeClass('hide-map');
+    $('#active-bars').removeClass('hide-sidebar');
     this.activeMarker = null;
 
     this.removeMarkers();
