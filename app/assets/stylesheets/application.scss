@@ -139,7 +139,15 @@ header {
   width: 30%;
   height: 500px;
   border: 1px solid black;
+  overflow: scroll;
+}
 
+#active-bars li {
+  border: 1px solid black;
+}
+
+#active-bars li:hover {
+  background: #eee;
 }
 
 .b10_logos, .NFL_logos, .MLB_logos {

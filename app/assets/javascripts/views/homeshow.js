@@ -52,12 +52,14 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addNFLseaMarkers': 'addNFLsea',
     'click #addNFLtbMarkers': 'addNFLtb',
     'click #addNFLwshMarkers': 'addNFLwsh',
+    'click .barInfo': 'activeBar'
   },
 
   initialize: function () {
     this.markers = [];
     this.geocoder = new google.maps.Geocoder();
     this.infowindow = new google.maps.InfoWindow({});
+    this.activeMarker = null;
   },
 
   render: function() {
@@ -65,6 +67,15 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.$el.html(view);
     this.showMap();
     return this;
+  },
+
+  activeBar: function (el) {
+    if (this.activeMarker) {
+      this.activeMarker.setAnimation(null);
+    }
+    this.activeMarker = this.markers[el.target.parentElement.id][0]
+    this.activeMarker.setAnimation(google.maps.Animation.BOUNCE);
+    console.log(el.target.parentElement.id);
   },
 
   removeMarkers: function () {
@@ -399,8 +410,29 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     $activeBars.html("");
     for (var i=0; i < this.markers.length; i++){
       if( this.map.getBounds().contains(this.markers[i][0].getPosition()) ){
-        console.log(this.markers[i][1].get('name'));
-        $activeBars.append("<li>" + this.markers[i][1].get('name') + "</li>")
+        var model = this.markers[i][1];
+        var info = "<li>";
+
+        if (model.get('hc_verified')) {
+          var verified = '<img id="verified_logo" src="http://www.sanfrancisco.com/images/common/icon_verified.jpg" alt="" />';
+          info = info.concat(verified);
+        };
+        info = info.concat("<p>" +
+                            model.get('name') +
+                            "</p><p>" +
+                            model.get('address') +
+                            "</p><p>" +
+                            model.get('number') +
+                            "</p></li>");
+
+
+        var $info = $(info);
+        $info.attr('id',i).addClass("barInfo")
+        // $info.bind( "click", function() {
+        //   var id = $info.attr('id')
+        //   alert( "User clicked " + id);
+        // });
+        $activeBars.append($info)
       }
     }
   }
