@@ -167,7 +167,8 @@ header {
   float: left;
   width: 30%;
   height: 500px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   font-family: 'Oswald', sans-serif;
   transition: left 1s;
   background: #E9E0D6;
