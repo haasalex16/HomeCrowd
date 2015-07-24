@@ -16,7 +16,7 @@
 
 
 html, body, h1, h2, nav, a, section,
-header, ul, li, img, p, input, button, main,
+header, ul, li,i, img, p, input, button, main,
 form {
  margin: 0;
  padding: 0;
@@ -191,6 +191,34 @@ header {
 
 #active-bars li:hover {
   background: #E9E0D6;
+}
+
+.icon {
+  float: left;
+  margin-right: 3px;
+}
+
+.name {
+  float:left;
+  font-size: 20px;
+  width: calc(100% - 83px);
+  height: 30px;
+  line-height: 32px;
+  overflow: hidden;
+}
+
+.verified, .alumni {
+  float: right;
+  font-size: 20px !important;
+  height: 30px;
+  width: 25px;
+}
+
+.address, .number {
+  clear: both;
+  width: 100%;
+  height: 19px;
+  overflow: hidden;
 }
 
 .b10_logos, .NFL_logos, .MLB_logos {

@@ -30,6 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'font-awesome-sass'
+
 gem 'backbone-on-rails'
 
 # Use Capistrano for deployment

@@ -70,6 +70,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   activeBar: function (id) {
+    console.log(this.activeMarker);
+
     if (this.activeMarker != null) {
       this.markers[this.activeMarker][0].setAnimation(null);
       this.$('#'+this.activeMarker).removeClass('active');
@@ -81,6 +83,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   getActiveID: function (el) {
+    console.log(el);
+    console.log(el.target.parentElement.id);
     this.activeBar(el.target.parentElement.id);
   },
 
@@ -436,22 +440,25 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     for (var i=0; i < this.markers.length; i++){
       if( this.map.getBounds().contains(this.markers[i][0].getPosition()) ){
         var model = this.markers[i][1];
-        var info = "<li>";
+        var $info = $("<li>");
+
+        $info.append('<img class="icon" src="' + model.get('icon') + '&w=30&h=30" alt="" />');
+        $info.append('<h1 class="name">' + model.get('name'))
 
         if (model.get('hc_verified')) {
-          var verified = '<img id="verified_logo" src="http://www.sanfrancisco.com/images/common/icon_verified.jpg" alt="" />';
-          info = info.concat(verified);
+          $info.append('<i class="fa fa-trophy verified"></i>');
+        } else {
+          $info.append('<i class="verified"></i>');
         };
-        info = info.concat("<p>" +
-                            model.get('name') +
-                            "</p><p>" +
-                            model.get('address') +
-                            "</p><p>" +
-                            model.get('number') +
-                            "</p></li>");
 
+        if (model.get('alumni')) {
+          $info.append('<i class="fa fa-graduation-cap alumni"></i>');
+        } else {
+          $info.append('<i class="alumni"></i>');
+        };
+        $info.append('<p class="address">' + model.get('address'))
+        $info.append('<p class="number">' + model.get('number'))
 
-        var $info = $(info);
         $info.attr('id',i).addClass("barInfo")
         if (this.activeMarker == i) {
           $info.addClass('active');
