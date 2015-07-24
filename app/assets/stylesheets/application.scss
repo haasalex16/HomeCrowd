@@ -14,6 +14,7 @@
  *= require_self
  */
 
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
 
 html, body, h1, h2, nav, a, section,
 header, ul, li,i, img, p, input, button, main,
@@ -51,15 +52,19 @@ body {
 
 // header
 #logo {
-  border: 2px solid #222;
   width: 65px;
   height: 65px;
-  background-image: image_url('logo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: white;
-  background-position: center;
+  font-size: 50px;
+  text-align: center;
+  line-height: 70px;
+  background-color: #C3C3C3;
+  color: #254458;
+  border: 2px solid #254458;
   border-radius: 50%;
+  // background-image: image_url('logo.png');
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // background-position: center;
 }
 
 .header-icon {
@@ -153,7 +158,9 @@ header {
   width: 96%;
   transition: width 1s, left 1s;
   background: #C3C3C3;
+  font-family: 'Oswald', sans-serif;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 .hide-map {
@@ -173,24 +180,22 @@ header {
   float: left;
   width: 30%;
   height: 500px;
-  border: 1px solid black;
   overflow: scroll;
   font-family: Roboto;
   transition: left 1s;
-  background: #C3C3C3;
+  background: #E9E0D6;
 }
 
 #active-bars li {
   border: 1px solid black;
+  background: #C3C3C3;
   cursor: pointer;
+  border-radius: 2px;
+  margin-bottom: 3px;
 }
 
-.active {
-  background: #EB7260;
-}
-
-#active-bars li:hover {
-  background: #E9E0D6;
+.active, #active-bars li:hover {
+  background: #EB7260 !important;
 }
 
 .icon {
@@ -272,4 +277,20 @@ header {
 
 #pac-input:focus {
   border-color: #4d90fe;
+}
+
+.full-logo {
+  margin: auto;
+  color: #254458;
+  width: 260px;
+  height: 90px;
+}
+
+.full-logo h1 {
+  font-size: 46px;
+}
+
+.full-logo h2 {
+  float: right;
+  line-height: 0px;
 }
