@@ -16,7 +16,7 @@
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
 
-html, body, h1, h2, nav, a, section,
+html, body, h1, h2, h3, nav, a, section,
 header, ul, li,i, img, p, input, button, main,
 form {
  margin: 0;
@@ -48,6 +48,8 @@ ul {
 
 body {
   background: #E9E0D6;
+  color: #254458;
+
 }
 
 // header
@@ -58,7 +60,6 @@ body {
   text-align: center;
   line-height: 70px;
   background-color: #C3C3C3;
-  color: #254458;
   border: 2px solid #254458;
   border-radius: 50%;
   // background-image: image_url('logo.png');
@@ -141,25 +142,11 @@ header {
 #map-canvas {
   position: relative;
   height: 500px;
-  width: calc(68%);
+  width: 68%;
   margin: auto;
   float: left;
   left: 1%;
   transition: left 1s;
-
-}
-
-#home {
-  z-index: -10;
-  float: left;
-  position: absolute;
-  height: 500px;
-  left: 2%;
-  width: 96%;
-  transition: width 1s, left 1s;
-  background: #C3C3C3;
-  font-family: 'Oswald', sans-serif;
-  overflow: hidden;
   border-radius: 5px;
 }
 
@@ -181,13 +168,13 @@ header {
   width: 30%;
   height: 500px;
   overflow: scroll;
-  font-family: Roboto;
+  font-family: 'Oswald', sans-serif;
   transition: left 1s;
   background: #E9E0D6;
 }
 
 #active-bars li {
-  border: 1px solid black;
+  border: 1px solid #254458;
   background: #C3C3C3;
   cursor: pointer;
   border-radius: 2px;
@@ -215,6 +202,7 @@ header {
 .verified, .alumni {
   float: right;
   font-size: 20px !important;
+  line-height: 30px !important;
   height: 30px;
   width: 25px;
 }
@@ -224,6 +212,7 @@ header {
   width: 100%;
   height: 19px;
   overflow: hidden;
+  padding-bottom: 1px
 }
 
 .b10_logos, .NFL_logos, .MLB_logos {
@@ -279,18 +268,65 @@ header {
   border-color: #4d90fe;
 }
 
+// home
+
+#home {
+  text-align: center;
+  z-index: -10;
+  float: left;
+  position: absolute;
+  height: 500px;
+  left: 2%;
+  width: 96%;
+  transition: width 1s, left 1s;
+  background: #C3C3C3;
+  font-family: 'Oswald', sans-serif;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
 .full-logo {
   margin: auto;
-  color: #254458;
-  width: 260px;
-  height: 90px;
+  width: 270px;
+  height: 80px;
 }
 
 .full-logo h1 {
   font-size: 46px;
 }
 
-.full-logo h2 {
+.full-logo h3 {
   float: right;
   line-height: 0px;
+}
+
+#home h2 {
+  margin-top: 3px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.break {
+  text-align: center;
+  background: #254458;
+  color: #C3C3C3;
+  font-size: 12px;
+  padding: 3px 7px;
+  width: 100px;
+  margin: 30px auto 0 auto;
+  letter-spacing: 2px;
+}
+
+.certs i{
+  font-size: 50px;
+}
+
+.certs {
+  margin: auto;
+  width: 209px;
+}
+
+.certs section {
+  float: left;
+  padding: 10px;
 }
