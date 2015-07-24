@@ -52,7 +52,42 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addNFLseaMarkers': 'addNFLsea',
     'click #addNFLtbMarkers': 'addNFLtb',
     'click #addNFLwshMarkers': 'addNFLwsh',
-    'click .barInfo': 'getActiveID'
+    'click .barInfo': 'getActiveID',
+
+    'click #addMLBbalMarkers': 'addMLBbal',
+    'click #addMLBbosMarkers': 'addMLBbos',
+    'click #addMLBchwMarkers': 'addMLBchw',
+    'click #addMLBcleMarkers': 'addMLBcle',
+    'click #addMLBdetMarkers': 'addMLBdet',
+    'click #addMLBhouMarkers': 'addMLBhou',
+    'click #addMLBkcMarkers': 'addMLBkc',
+    'click #addMLBlaaMarkers': 'addMLBlaa',
+    'click #addMLBminMarkers': 'addMLBmin',
+    'click #addMLBnyyMarkers': 'addMLBnyy',
+    'click #addMLBoakMarkers': 'addMLBoak',
+    'click #addMLBseaMarkers': 'addMLBsea',
+    'click #addMLBtbMarkers': 'addMLBtb',
+    'click #addMLBtexMarkers': 'addMLBtex',
+    'click #addMLBtorMarkers': 'addMLBtor',
+    'click #addMLBariMarkers': 'addMLBari',
+    'click #addMLBatlMarkers': 'addMLBatl',
+    'click #addMLBchcMarkers': 'addMLBchc',
+    'click #addMLBcinMarkers': 'addMLBcin',
+    'click #addMLBcolMarkers': 'addMLBcol',
+    'click #addMLBmiaMarkers': 'addMLBmia',
+    'click #addMLBladMarkers': 'addMLBlad',
+    'click #addMLBmilMarkers': 'addMLBmil',
+    'click #addMLBnymMarkers': 'addMLBnym',
+    'click #addMLBphiMarkers': 'addMLBphi',
+    'click #addMLBpitMarkers': 'addMLBpit',
+    'click #addMLBsdMarkers': 'addMLBsd',
+    'click #addMLBsfMarkers': 'addMLBsf',
+    'click #addMLBstlMarkers': 'addMLBstl',
+    'click #addMLBwshMarkers': 'addMLBwsh',
+
+
+
+
   },
 
   initialize: function () {
@@ -330,6 +365,129 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.addLoyaltyMarkers('Washington Redskins');
   },
 
+  addMLBbal: function () {
+    this.addLoyaltyMarkers('Baltimore Orioles');
+  },
+
+  addMLBbos: function () {
+    this.addLoyaltyMarkers('Boston Red Sox');
+  },
+
+  addMLBchw: function () {
+    this.addLoyaltyMarkers('Chicago White Sox');
+  },
+
+  addMLBcle: function () {
+    this.addLoyaltyMarkers('Cleveland Indians');
+  },
+
+  addMLBdet: function () {
+    this.addLoyaltyMarkers('Detroit Tigers');
+  },
+
+  addMLBhou: function () {
+    this.addLoyaltyMarkers('Houston Astros');
+  },
+
+  addMLBkc: function () {
+    this.addLoyaltyMarkers('Kansas City Royals');
+  },
+
+  addMLBlaa: function () {
+    this.addLoyaltyMarkers('Los Angeles Angels');
+  },
+
+  addMLBmin: function () {
+    this.addLoyaltyMarkers('Minnesota Twins');
+  },
+
+  addMLBnyy: function () {
+    this.addLoyaltyMarkers('New York Yankees');
+  },
+
+  addMLBoak: function () {
+    this.addLoyaltyMarkers('Oakland Athletics');
+  },
+
+  addMLBsea: function () {
+    this.addLoyaltyMarkers('Seattle Mariners');
+  },
+
+  addMLBtb: function () {
+    this.addLoyaltyMarkers('Tampa Bay Rays');
+  },
+
+  addMLBtex: function () {
+    this.addLoyaltyMarkers('Texas Rangers');
+  },
+
+  addMLBtor: function () {
+    this.addLoyaltyMarkers('Toronto Blue Jays');
+  },
+
+  addMLBari: function () {
+    this.addLoyaltyMarkers('Arizona Diamondbacks');
+  },
+
+  addMLBatl: function () {
+    this.addLoyaltyMarkers('Atlanta Braves');
+  },
+
+  addMLBchc: function () {
+    this.addLoyaltyMarkers('Chicago Cubs');
+  },
+
+  addMLBcin: function () {
+    this.addLoyaltyMarkers('Cinncinnati Reds');
+  },
+
+  addMLBcol: function () {
+    this.addLoyaltyMarkers('Colorado Rockies');
+  },
+
+  addMLBmia: function () {
+    this.addLoyaltyMarkers('Miami Marlins');
+  },
+
+  addMLBlad: function () {
+    this.addLoyaltyMarkers('Los Angeles Dodgers');
+  },
+
+  addMLBmil: function () {
+    this.addLoyaltyMarkers('Milwaukee Brewers');
+  },
+
+  addMLBnym: function () {
+    this.addLoyaltyMarkers('New York Mets');
+  },
+
+  addMLBphi: function () {
+    this.addLoyaltyMarkers('Philadelphia Phillies');
+  },
+
+  addMLBpit: function () {
+    this.addLoyaltyMarkers('Pittsburgh Pirates');
+  },
+
+  addMLBsd: function () {
+    this.addLoyaltyMarkers('San Diego Padres');
+  },
+
+  addMLBsf: function () {
+    this.addLoyaltyMarkers('San Francisco Giants');
+  },
+
+  addMLBstl: function () {
+    this.addLoyaltyMarkers('St. Louis Cardinals');
+  },
+
+  addMLBwsh: function () {
+    this.addLoyaltyMarkers('Washington Nationals');
+  },
+
+
+
+
   addMarker: function (model, idx) {
     var contentString = this.createContentString(model);
     var lat = model.get('lat');
@@ -370,6 +528,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     mapOptions = {
 
       center: { lat: 40.775273, lng: -73.973041},
+      minZoom: 4,
+      maxZoom: 16,
       zoom: 12,
       styles: [
         {
