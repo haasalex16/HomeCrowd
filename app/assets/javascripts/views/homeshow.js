@@ -529,33 +529,34 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
       center: { lat: 40.775273, lng: -73.973041},
       minZoom: 4,
-      maxZoom: 16,
+      maxZoom: 17,
       zoom: 12,
       styles: [
         {
           "featureType": "poi",
           "elementType": "geometry",
           "stylers": [
-            { "color": "#fff2dd" }
+            { "color": "#D6E0AB" }
           ]
         },{
           "featureType": "water",
           "elementType": "geometry",
           "stylers": [
-            { "color": "#6195ED" }
+            { "color": "#ACC7F2" }
           ]
         },{
           "featureType": "road",
           "elementType": "geometry",
           "stylers": [
             { "visibility": "simplified" },
-            { "color": "#000000" }
+            { "color": "#FFFFFF" }
           ]
         },{
+          // mainland
           "featureType": "landscape",
           "elementType": "geometry",
           "stylers": [
-            { "color": "#c3c3c3" }
+            { "color": "#E8E4DF" }
           ]
         },{
           "featureType": "transit.line",
