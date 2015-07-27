@@ -216,7 +216,7 @@ header {
   padding-bottom: 1px
 }
 
-.b10_logos, .NFL_logos, .MLB_logos {
+.b10_logos, .NFL_logos, .sec_logos, .MLB_logos {
   z-index: 1;
   position: absolute;
   left: 50%;
@@ -228,7 +228,7 @@ header {
   border-radius: 5px;
 }
 
-.b10_logos {
+.b10_logos, .sec_logos {
   width: 480px;
 }
 
