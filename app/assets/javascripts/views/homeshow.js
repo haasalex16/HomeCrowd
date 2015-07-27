@@ -187,6 +187,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addLeagueMarkers: function(league) {
+    this.map.setZoom(12);
+
     $('#map-canvas').removeClass('hide-map');
     $('#active-bars').removeClass('hide-sidebar');
 
@@ -215,6 +217,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addLoyaltyMarkers: function (loyalty) {
+    this.map.setZoom(12);
+
 
     $('#map-canvas').removeClass('hide-map');
     $('#active-bars').removeClass('hide-sidebar');
