@@ -1,0 +1,4 @@
+class Loyalty < ActiveRecord::Base
+  validates_uniqueness_of :bar_id, scope: :team_id, message: "Your bar is already affiliated with that team."
+
+end
