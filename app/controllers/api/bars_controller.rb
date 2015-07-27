@@ -30,10 +30,8 @@ class Api::BarsController < ApplicationController
                                   :address,
                                   :number,
                                   :website,
-                                  :notes,
-                                  :alumni,
-                                  :longitude,
-                                  :latitude)
+                                  :lng,
+                                  :lat)
     end
 
 end
