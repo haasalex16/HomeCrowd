@@ -17,7 +17,7 @@ class Api::BarsController < ApplicationController
   end
 
   def index
-    @bars = Bar.all
+    @bars = Bar.all.includes(:loyalties, :teams)
     render :index
   end
 
