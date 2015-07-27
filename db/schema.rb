@@ -11,27 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727044354) do
+ActiveRecord::Schema.define(version: 20150727050232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bars", force: :cascade do |t|
-    t.string   "name",        null: false
-    t.string   "address",     null: false
-    t.string   "number",      null: false
+    t.string   "name",       null: false
+    t.string   "address",    null: false
+    t.float    "lat",        null: false
+    t.float    "lng",        null: false
+    t.string   "number",     null: false
     t.string   "website"
-    t.string   "notes"
-    t.boolean  "alumni"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "loyalty"
-    t.float    "lat"
-    t.float    "lng"
-    t.string   "icon"
-    t.boolean  "hc_verified"
-    t.string   "league"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  add_index "bars", ["address"], name: "index_bars_on_address", unique: true, using: :btree
+  add_index "bars", ["lat"], name: "index_bars_on_lat", using: :btree
+  add_index "bars", ["lng"], name: "index_bars_on_lng", using: :btree
 
   create_table "loyalties", force: :cascade do |t|
     t.integer  "bar_id",                      null: false
