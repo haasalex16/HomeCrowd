@@ -1,0 +1,20 @@
+<h1><%= bar.escape('name') %></h1>
+
+<h2><%= bar.escape('address') %></h2>
+<h3><%= bar.escape('number') %></h3>
+<% if (bar.get('teams')) { %>
+  <ul>
+    <% bar.get('teams').forEach(function(team){ %>
+      <li>
+      <img class="icon" src= "<%= team.icon%>&w=30&h=30" alt=""/>
+      <%= team.name %>
+      <% if (team.alumni) { %>
+        Alumni
+      <%  } %>
+      <% if (team.hc_verified) { %>
+        Verified!
+      <% } %>
+      </li>
+    <%  })%>
+  </ul>
+<% } %>

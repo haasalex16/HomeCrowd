@@ -12,8 +12,8 @@ class Api::BarsController < ApplicationController
   end
 
   def show
-    @bar = Bar.find(params[:id])
-    render json: @bar
+    @bar = Bar.includes(:loyalties, :teams).find(params[:id])
+    render :show
   end
 
   def index

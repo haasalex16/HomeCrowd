@@ -200,21 +200,21 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.updateSidebar();
   },
 
-  createContentString: function(model) {
-    var contentString = "<div>";
-    if (model.get('hc_verified')) {
-      var verified = '<img id="verified_logo" src="http://www.sanfrancisco.com/images/common/icon_verified.jpg" alt="" />';
-      contentString = contentString.concat(verified);
-    };
-    contentString = contentString.concat("<p>" +
-                        model.get('name') +
-                        "</p><p>" +
-                        model.get('address') +
-                        "</p><p>" +
-                        model.get('number') +
-                        "</p></div>");
-    return contentString;
-  },
+  // createContentString: function(model) {
+  //   var contentString = "<div>";
+  //   if (model.get('hc_verified')) {
+  //     var verified = '<img id="verified_logo" src="http://www.sanfrancisco.com/images/common/icon_verified.jpg" alt="" />';
+  //     contentString = contentString.concat(verified);
+  //   };
+  //   contentString = contentString.concat("<p>" +
+  //                       model.get('name') +
+  //                       "</p><p>" +
+  //                       model.get('address') +
+  //                       "</p><p>" +
+  //                       model.get('number') +
+  //                       "</p></div>");
+  //   return contentString;
+  // },
 
   addLoyaltyMarkers: function (loyalty) {
     this.map.setZoom(12);

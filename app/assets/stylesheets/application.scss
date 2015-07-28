@@ -331,3 +331,35 @@ header {
   float: left;
   padding: 10px;
 }
+
+// bar show
+
+.bar-show {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+  height: 500px;
+  width: 68%;
+  margin: auto;
+  float: left;
+  left: 1%;
+  transition: left 1s;
+  border-radius: 5px;
+  background: #C3C3C3;
+}
+
+.bar-show h1 {
+  font-size: 64px;
+}
+
+.bar-show h2 {
+  font-size: 44px
+}
+
+.bar-show h3 {
+  font-size: 34px
+}
+
+.bar-show li {
+  font-size: 26px;
+}
