@@ -5,11 +5,8 @@
 <h2><%= bar.escape('address') %></h2>
 <h3><%= bar.escape('number') %></h3>
 <div class="card-container group">
-  <div class="left">
-  </div>
-  <div class="right">
-    
-  </div>
+    <i class="fa fa-arrow-circle-left fa-2x left"></i>
+    <i class="fa fa-arrow-circle-right fa-2x right"></i>
   <div class="cards">
     <% if (bar.get('teams')) { %>
       <% bar.get('teams').forEach(function(team){ %>
@@ -34,5 +31,8 @@
         </div>
       <%  })%>
     <% } %>
+    <div class="add-card">
+      <h1>Add A Team</h1>
+    </div>
   </div>
 </div>

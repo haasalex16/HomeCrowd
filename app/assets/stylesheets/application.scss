@@ -369,7 +369,6 @@ header {
 }
 
 .card-container {
-  // background: red;
   height: 285px;
   width: 100%;
   position: absolute;
@@ -380,11 +379,7 @@ header {
   position: relative;
   left: 0px;
   transition: left 1s;
-
-  /* set height to be the same as carousel */
   height: 100%;
-  width: 1050px;
-  background: blue;
 }
 
 .loyalty-card {
@@ -396,6 +391,18 @@ header {
   float: left;
   border-radius: 2px;
   color: #c3c3c3;
+}
+
+.add-card {
+  position: relative;
+  background: #333;
+  height: 275px;
+  width: 70px;
+  margin: 5px;
+  float: left;
+  border-radius: 2px;
+  color: #c3c3c3;
+  transition: background .5s;
 }
 
 .loyalty-card img {
@@ -420,29 +427,33 @@ header {
 
 .left {
   top: 50%;
+  left: 10px;
   transform: translateY(-50%);
   z-index: 4;
-  border:  15px solid transparent;
-  border-right: 15px solid white;
-
+  color: #E9E0D6;
   position: absolute;
 }
 
 .right {
   top: 50%;
-  right: 0;
+  right: 10px;
   transform: translateY(-50%);
   z-index: 4;
-  border:  15px solid transparent;
-  border-left: 15px solid white;  position: absolute;
+  color: #E9E0D6;
+  position: absolute;
 }
 
-.left:hover {
-  border:  15px solid transparent;
-  border-right: 15px solid red;
+.left:hover, .right:hover {
+  color: #EB7260;
 }
 
-.right:hover {
-  border:  15px solid transparent;
-  border-left: 15px solid red;
+.add-card:hover {
+  background: #EB7260;
+  cursor: pointer;
+}
+
+.add-card h1 {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
