@@ -54,7 +54,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addNFLtbMarkers': 'addNFLtb',
     'click #addNFLwshMarkers': 'addNFLwsh',
     'click .barInfo': 'getActiveID',
-
+    'mouseover .barInfo': 'lightBounce',
     'click #addMLBbalMarkers': 'addMLBbal',
     'click #addMLBbosMarkers': 'addMLBbos',
     'click #addMLBchwMarkers': 'addMLBchw',
@@ -94,7 +94,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   initialize: function () {
     this.markers = [];
     this.geocoder = new google.maps.Geocoder();
-    this.infowindow = new google.maps.InfoWindow({});
+    // this.infowindow = new google.maps.InfoWindow({});
     this.activeMarker = null;
   },
 
@@ -103,6 +103,18 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.$el.html(view);
     this.showMap();
     return this;
+  },
+
+  lightBounce: function (el) {
+    var id = el.target.parentElement.id
+    if (id != 'active-bars') {
+      this.markers[id][0].setAnimation(google.maps.Animation.BOUNCE);
+      setTimeout(function() {
+        if (this.activeMarker != id) {
+          this.markers[id][0].setAnimation(null);
+        }
+      }.bind(this),750);
+    }
   },
 
   activeBar: function (id) {
@@ -120,9 +132,12 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   getActiveID: function (el) {
-    console.log(el);
-    console.log(el.target.parentElement.id);
-    this.activeBar(el.target.parentElement.id);
+    // console.log(el);
+    // console.log(el.target.parentElement.id);
+    var id = el.target.parentElement.id
+    if (id != 'active-bars') {
+      this.activeBar(id);
+    }
   },
 
   removeMarkers: function () {
