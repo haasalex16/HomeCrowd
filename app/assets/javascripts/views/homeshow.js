@@ -85,13 +85,10 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addMLBsfMarkers': 'addMLBsf',
     'click #addMLBstlMarkers': 'addMLBstl',
     'click #addMLBwshMarkers': 'addMLBwsh',
-
-
-
-
   },
 
   initialize: function () {
+    this.listenTo(this.collection, 'sync', this.render);
     this.markers = [];
     this.geocoder = new google.maps.Geocoder();
     // this.infowindow = new google.maps.InfoWindow({});
@@ -107,7 +104,10 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   lightBounce: function (el) {
     var id = el.target.parentElement.id
-    if (id != 'active-bars') {
+    console.log(id);
+    if (id == 'active-bars' || id == "") {
+      return;
+    } else {
       this.markers[id][0].setAnimation(google.maps.Animation.BOUNCE);
       setTimeout(function() {
         if (this.activeMarker != id) {
@@ -135,7 +135,9 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     // console.log(el);
     // console.log(el.target.parentElement.id);
     var id = el.target.parentElement.id
-    if (id != 'active-bars') {
+    if (id == 'active-bars' || id == "") {
+      return;
+    } else {
       this.activeBar(id);
     }
   },
@@ -653,10 +655,12 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
         } else {
           $info.append('<i class="alumni"></i>');
         };
-        $info.append('<p class="address">' + model.get('address'))
-        $info.append('<p class="number">' + model.get('number'))
+        $info.append('<p class="address">' + model.get('address'));
+        $info.append('<p class="number">' + model.get('number'));
+        $info.append('<a class="more-info" href="#/bars/' + model.get('id') + '"><i class="fa fa-info-circle"></i></a>')
 
-        $info.attr('id',i).addClass("barInfo")
+
+        $info.attr('id',i).addClass("barInfo").addClass('group');
         if (this.activeMarker == i) {
           $info.addClass('active');
         }

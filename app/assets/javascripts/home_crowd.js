@@ -6,6 +6,7 @@ window.HomeCrowd = {
   initialize: function() {
     // alert('Hello from Backbone!');
     new HomeCrowd.Routers.Router({$rootEl: $('#main')});
+    Backbone.history.stop();
     Backbone.history.start();
   }
 };
