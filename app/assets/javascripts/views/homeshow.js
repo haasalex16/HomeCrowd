@@ -510,15 +510,15 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
 
   addMarker: function (model, idx) {
-    var contentString = this.createContentString(model);
+    // var contentString = this.createContentString(model);
     var lat = model.get('lat');
     var lng = model.get('lng');
     var image_url = model.get('icon');
 
     var myLatlng = new google.maps.LatLng(lat,lng);
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
+    // var infowindow = new google.maps.InfoWindow({
+    //     content: contentString
+    // });
     var marker = new google.maps.Marker({
         animation:  google.maps.Animation.DROP,
         map: this.map,
@@ -534,7 +534,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.markers.push([marker, model]);
 
     google.maps.event.addListener(marker, 'click', function() {
-      console.log(idx);
+      // console.log(idx);
       $('#active-bars').scrollTop(0);
       this.activeBar(idx);
       $('#active-bars').scrollTop($('#'+idx).position().top - 100);

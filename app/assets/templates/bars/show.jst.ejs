@@ -1,20 +1,38 @@
-<h1><%= bar.escape('name') %></h1>
+<h1>
+  <a target="_blank" href="<%= bar.escape('website') %>"><%= bar.escape('name') %></a>
+  </h1>
 
 <h2><%= bar.escape('address') %></h2>
 <h3><%= bar.escape('number') %></h3>
-<% if (bar.get('teams')) { %>
-  <ul>
-    <% bar.get('teams').forEach(function(team){ %>
-      <li>
-      <img class="icon" src= "<%= team.icon%>&w=30&h=30" alt=""/>
-      <%= team.name %>
-      <% if (team.alumni) { %>
-        Alumni
-      <%  } %>
-      <% if (team.hc_verified) { %>
-        Verified!
-      <% } %>
-      </li>
-    <%  })%>
-  </ul>
-<% } %>
+<div class="card-container group">
+  <div class="left">
+  </div>
+  <div class="right">
+    
+  </div>
+  <div class="cards">
+    <% if (bar.get('teams')) { %>
+      <% bar.get('teams').forEach(function(team){ %>
+        <div class="loyalty-card">
+          <img src= "<%= team.icon%>&w=72&h=72" alt=""/>
+          <h1>
+            <%= team.name %>
+          </h1>
+          <section class='affiliation'>
+            <% if (team.alumni) { %>
+              <i class="fa fa-graduation-cap"></i> <a href="#">Link</a>
+            <%  } %>
+          </section>
+          <section class='hc_verified'>
+            <% if (team.hc_verified) { %>
+              Verified!
+            <% } %>
+          </section>
+          <h3>
+          Specials
+          </h3>
+        </div>
+      <%  })%>
+    <% } %>
+  </div>
+</div>

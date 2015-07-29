@@ -2,6 +2,7 @@ json.id       @bar.id
 json.name     @bar.name
 json.address  @bar.address
 json.number   @bar.number
+json.website  @bar.website
 json.teams    @bar.loyalties do |loyalty|
   json.id           loyalty.team.id
   json.name         loyalty.team.name
