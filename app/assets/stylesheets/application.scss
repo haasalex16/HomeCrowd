@@ -228,6 +228,7 @@ header {
   cursor: pointer;
   border-radius: 2px;
   margin-bottom: 3px;
+  transition: background .25s;
 }
 
 .active, #active-bars li:hover {
