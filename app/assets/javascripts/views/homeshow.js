@@ -85,6 +85,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addMLBsfMarkers': 'addMLBsf',
     'click #addMLBstlMarkers': 'addMLBstl',
     'click #addMLBwshMarkers': 'addMLBwsh',
+    'click .more-info': 'flipBoard'
   },
 
   initialize: function () {
@@ -102,9 +103,17 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     return this;
   },
 
+  flipBoard: function(el) {
+    var id = el.target.parentElement.id;
+    var bar_id = this.markers[id][1].escape('bar_id');
+    var bar = HomeCrowd.Collections.bars.getOrFetch(bar_id);
+    var view = new HomeCrowd.Views.BarShow({model: bar})
+    $('.map-details').addClass('flipped');
+    $('.details-container').html(view.render().$el);
+  },
+
   lightBounce: function (el) {
     var id = el.target.parentElement.id
-    console.log(id);
     if (id == 'active-bars' || id == "") {
       return;
     } else {
@@ -132,12 +141,11 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   getActiveID: function (el) {
-    // console.log(el);
-    // console.log(el.target.parentElement.id);
     var id = el.target.parentElement.id
-    if (id == 'active-bars' || id == "") {
+    if (id == 'active-bars' || el.target.className == "more-info fa fa-info-circle") {
       return;
     } else {
+      $('.map-details').removeClass('flipped');
       this.activeBar(id);
     }
   },
@@ -152,7 +160,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   home: function() {
 
     $('#active-bars').html("");
-    $('#map-canvas').addClass('hide-map');
+    $('.map-details-container').addClass('hide-map');
     $('#active-bars').addClass('hide-sidebar');
 
     this.removeMarkers();
@@ -205,8 +213,9 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   addLeagueMarkers: function(league) {
     this.map.setZoom(12);
+    $('.map-details').removeClass('flipped');
 
-    $('#map-canvas').removeClass('hide-map');
+    $('.map-details-container').removeClass('hide-map');
     $('#active-bars').removeClass('hide-sidebar');
 
     this.removeMarkers();
@@ -235,9 +244,10 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
   addLoyaltyMarkers: function (loyalty) {
     this.map.setZoom(12);
+    $('.map-details').removeClass('flipped');
 
 
-    $('#map-canvas').removeClass('hide-map');
+    $('.map-details-container').removeClass('hide-map');
     $('#active-bars').removeClass('hide-sidebar');
     this.activeMarker = null;
 
@@ -551,7 +561,6 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.markers.push([marker, model]);
 
     google.maps.event.addListener(marker, 'click', function() {
-      // console.log(idx);
       $('#active-bars').scrollTop(0);
       this.activeBar(idx);
       $('#active-bars').scrollTop($('#'+idx).position().top - 100);
@@ -657,7 +666,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
         };
         $info.append('<p class="address">' + model.get('address'));
         $info.append('<p class="number">' + model.get('number'));
-        $info.append('<a class="more-info" href="#/bars/' + model.get('id') + '"><i class="fa fa-info-circle"></i></a>')
+        $info.append('<i class="more-info fa fa-info-circle"></i>')
 
 
         $info.attr('id',i).addClass("barInfo").addClass('group');
