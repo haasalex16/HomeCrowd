@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727051459) do
+ActiveRecord::Schema.define(version: 20150802070649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20150727051459) do
   add_index "bars", ["address"], name: "index_bars_on_address", unique: true, using: :btree
   add_index "bars", ["lat"], name: "index_bars_on_lat", using: :btree
   add_index "bars", ["lng"], name: "index_bars_on_lng", using: :btree
+
+  create_table "groups", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "team_id",    null: false
+    t.string   "assoc",      null: false
+    t.string   "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "loyalties", force: :cascade do |t|
     t.integer  "bar_id",                      null: false
