@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150802070649) do
+ActiveRecord::Schema.define(version: 20150804062509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20150802070649) do
     t.boolean  "hc_verified", default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.text     "specials"
+    t.integer  "group_id"
   end
 
   add_index "loyalties", ["bar_id"], name: "index_loyalties_on_bar_id", using: :btree
