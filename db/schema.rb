@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804062509) do
+ActiveRecord::Schema.define(version: 20150804065425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bars", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "address",    null: false
-    t.float    "lat",        null: false
-    t.float    "lng",        null: false
-    t.string   "number",     null: false
+    t.string   "name",            null: false
+    t.string   "address",         null: false
+    t.float    "lat",             null: false
+    t.float    "lng",             null: false
+    t.string   "number",          null: false
     t.string   "website"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "google_place_id"
   end
 
-  add_index "bars", ["address"], name: "index_bars_on_address", unique: true, using: :btree
   add_index "bars", ["lat"], name: "index_bars_on_lat", using: :btree
   add_index "bars", ["lng"], name: "index_bars_on_lng", using: :btree
 
