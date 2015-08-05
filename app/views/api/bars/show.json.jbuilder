@@ -7,6 +7,8 @@ json.teams    @bar.loyalties do |loyalty|
   json.id           loyalty.team.id
   json.name         loyalty.team.name
   json.league       loyalty.team.league
+  json.specials       loyalty.specials
+
   json.alumni       loyalty.alumni
   json.hc_verified  loyalty.hc_verified
   json.icon         loyalty.team.icon_url

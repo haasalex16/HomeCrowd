@@ -431,6 +431,10 @@ header {
   overflow: hidden;
 }
 
+.bar-show > h1 a:hover {
+  color: #EB7260;
+}
+
 .bar-show h2 {
   font-size: 44px;
   height: 66px;
@@ -500,10 +504,17 @@ header {
   clear: both;
   height: 24px;
   font-size: 18px;
+  overflow: hidden;
 }
 
 .affiliation a:hover {
   color: white;
+}
+
+.specials {
+  height: 129px;
+  overflow: scroll;
+  text-align: left;
 }
 
 .left {
