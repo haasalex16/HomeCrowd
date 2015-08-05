@@ -16,8 +16,12 @@
             <%= team.name %>
           </h1>
           <section class='affiliation'>
-            <% if (team.alumni) { %>
-              <i class="fa fa-graduation-cap"></i> <a href="#">Link</a>
+            <% if (team.group) { %>
+              <% if (team.group_assoc=='Alumni') { %>
+                <i class="fa fa-graduation-cap"></i> <a target="_blank" href="<%=team.group_site%>"><%= team.group %></a>
+              <% } else { %>
+                <i class="fa fa-users"></i> <a target="_blank" href="<%=team.group_site%>"><%= team.group %></a>
+              <% }%>
             <%  } %>
           </section>
           <section class='hc_verified'>

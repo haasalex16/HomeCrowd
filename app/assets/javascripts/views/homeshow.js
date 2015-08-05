@@ -661,6 +661,12 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
         if (model.get('alumni')) {
           $info.append('<i class="fa fa-graduation-cap alumni"></i>');
+        } else if (model.get('group')) {
+          if (model.get('group_assoc')=='Alumni') {
+            $info.append('<i class="fa fa-graduation-cap alumni"></i>');
+          } else {
+            $info.append('<i class="fa fa-users alumni"></i>');                        
+          }
         } else {
           $info.append('<i class="alumni"></i>');
         };

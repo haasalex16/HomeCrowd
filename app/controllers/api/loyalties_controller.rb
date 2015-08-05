@@ -8,7 +8,7 @@ class Api::LoyaltiesController < ApplicationController
   end
 
   def index
-    @loyalties = Loyalty.all.includes(:bar, :team)
+    @loyalties = Loyalty.all.includes(:bar, :team, :group)
     render :index
   end
 

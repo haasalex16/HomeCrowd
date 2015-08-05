@@ -401,7 +401,7 @@ header {
 
 .certs {
   margin: auto;
-  width: 209px;
+  width: 315px;
 }
 
 .certs section {
@@ -500,6 +500,10 @@ header {
   clear: both;
   height: 24px;
   font-size: 18px;
+}
+
+.affiliation a:hover {
+  color: white;
 }
 
 .left {
