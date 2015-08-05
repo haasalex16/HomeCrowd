@@ -12,13 +12,13 @@ json.teams    @bar.loyalties do |loyalty|
   json.alumni       loyalty.alumni
   json.hc_verified  loyalty.hc_verified
   json.icon         loyalty.team.icon_url
-  if loyalty.group
+  if loyalty.group_id
     json.group    loyalty.group.name
     json.group_assoc    loyalty.group.assoc
     json.group_site    loyalty.group.website
   else
-    json.set!    'group', loyalty.group
-    json.set!    'group_assoc', loyalty.group
-    json.set!    'group_site', loyalty.group
+    json.set!    'group', loyalty.group_id
+    json.set!    'group_assoc', loyalty.group_id
+    json.set!    'group_site', loyalty.group_id
   end
 end
