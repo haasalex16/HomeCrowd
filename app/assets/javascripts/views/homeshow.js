@@ -85,7 +85,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addMLBsfMarkers': 'addMLBsf',
     'click #addMLBstlMarkers': 'addMLBstl',
     'click #addMLBwshMarkers': 'addMLBwsh',
-    'click .more-info': 'flipBoard'
+    'click .more-info': 'flipBoard',
+    'click #newLoyalty': 'newLoyalty'
   },
 
   initialize: function () {
@@ -94,6 +95,14 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.geocoder = new google.maps.Geocoder();
     // this.infowindow = new google.maps.InfoWindow({});
     this.activeMarker = null;
+  },
+
+  newLoyalty: function () {
+    var view = new HomeCrowd.Views.LoyaltiesForm();
+    $('#loyaltyForm').removeClass('hideForm');
+    $('#loyaltyForm').addClass('displayForm');
+
+    $('#loyaltyForm').html(view.render().$el);
   },
 
   render: function() {
@@ -107,13 +116,13 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     var id = el.target.parentElement.id;
     var bar_id = this.markers[id][1].escape('bar_id');
     var bar = HomeCrowd.Collections.bars.getOrFetch(bar_id);
-    var view = new HomeCrowd.Views.BarShow({model: bar})
+    var view = new HomeCrowd.Views.BarShow({model: bar});
     $('.map-details').addClass('flipped');
     $('.details-container').html(view.render().$el);
   },
 
   lightBounce: function (el) {
-    var id = el.target.parentElement.id
+    var id = el.target.parentElement.id;
     if (id == 'active-bars' || id == "") {
       return;
     } else {
@@ -141,7 +150,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   getActiveID: function (el) {
-    var id = el.target.parentElement.id
+    var id = el.target.parentElement.id;
     if (id == 'active-bars' || el.target.className == "more-info fa fa-info-circle") {
       return;
     } else {
@@ -651,13 +660,13 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
         var $info = $("<li>");
 
         $info.append('<img class="icon" src="' + model.get('icon') + '&w=30&h=30" alt="" />');
-        $info.append('<h1 class="name">' + model.get('name'))
+        $info.append('<h1 class="name">' + model.get('name'));
 
         if (model.get('hc_verified')) {
           $info.append('<i class="fa fa-trophy verified"></i>');
         } else {
           $info.append('<i class="verified"></i>');
-        };
+        }
 
         if (model.get('alumni')) {
           $info.append('<i class="fa fa-graduation-cap alumni"></i>');
@@ -665,21 +674,22 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
           if (model.get('group_assoc')=='Alumni') {
             $info.append('<i class="fa fa-graduation-cap alumni"></i>');
           } else {
-            $info.append('<i class="fa fa-users alumni"></i>');                        
+            $info.append('<i class="fa fa-users alumni"></i>');
           }
         } else {
           $info.append('<i class="alumni"></i>');
-        };
+        }
+
         $info.append('<p class="address">' + model.get('address'));
         $info.append('<p class="number">' + model.get('number'));
-        $info.append('<i class="more-info fa fa-info-circle"></i>')
+        $info.append('<i class="more-info fa fa-info-circle"></i>');
 
 
         $info.attr('id',i).addClass("barInfo").addClass('group');
         if (this.activeMarker == i) {
           $info.addClass('active');
         }
-        $activeBars.append($info)
+        $activeBars.append($info);
       }
     }
   }

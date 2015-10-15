@@ -554,3 +554,23 @@ header {
   top: 50%;
   transform: translateY(-50%);
 }
+
+#loyaltyForm {
+  position: fixed;
+  color: black;
+}
+
+.hideForm {
+  display: none;
+}
+
+.displayForm {
+  margin: auto;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: white;
+  display: block;
+  width: 400px;
+  height: 200px;
+}

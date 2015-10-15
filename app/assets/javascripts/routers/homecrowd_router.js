@@ -16,13 +16,13 @@ HomeCrowd.Routers.Router = Backbone.Router.extend({
     var view = new HomeCrowd.Views.HomeShow({collection: this.loyalties});
     this._swapView(view);
   },
-
-  barShow: function(id) {
-    // this.bars.fetch();
-    var model = this.bars.getOrFetch(id);
-    var view = new HomeCrowd.Views.BarShow({model: model});
-    this._swapView(view);
-  },
+  // 
+  // barShow: function(id) {
+  //   // this.bars.fetch();
+  //   var model = this.bars.getOrFetch(id);
+  //   var view = new HomeCrowd.Views.BarShow({model: model});
+  //   this._swapView(view);
+  // },
 
   _swapView: function (view) {
     if(this.currentView) {
