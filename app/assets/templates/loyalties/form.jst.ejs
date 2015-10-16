@@ -1,9 +1,9 @@
 Add Your Team!
 <br>
 <form class="" action="index.html" method="post">
-  <label for="loyalty">Team Loyalty</label>
 
   <select name="loyalty[team_id]">
+    <option selected disabled>Choose Your Team</option>
     <optgroup label="Big Ten">
       <option value="1">Michigan State University</option>
       <option value="2">Northwestern University</option>
@@ -52,54 +52,56 @@ Add Your Team!
       <option value="43">Toronto Blue Jays</option>
       <option value="44">Washington Nationals</option>
     </optgroup>
+    <optgroup label="NFL">
+      <option value="45">Arizona Cardinals</option>
+      <option value="46">Atlanta Falcons</option>
+      <option value="47">Baltimore Ravens</option>
+      <option value="48">Buffalo Bills</option>
+      <option value="49">Carolina Panthers</option>
+      <option value="50">Chicago Bears</option>
+      <option value="51">Cincinnati Bengals</option>
+      <option value="52">Cleveland Browns</option>
+      <option value="53">Dallas Cowboys</option>
+      <option value="54">Denver Broncos</option>
+      <option value="55">Detroit Lions</option>
+      <option value="56">Green Bay Packers</option>
+      <option value="57">Houston Texans</option>
+      <option value="58">Indianapolis Colts</option>
+      <option value="59">Jacksonville Jaguars</option>
+      <option value="60">Kansas City Chiefs</option>
+      <option value="61">Miami Dolphins</option>
+      <option value="62">Minnesota Vikings</option>
+      <option value="63">New England Patriots</option>
+      <option value="64">New Orleans Saints</option>
+      <option value="65">New York Giants</option>
+      <option value="66">New York Jets</option>
+      <option value="67">Oakland Raiders</option>
+      <option value="68">Philadelphia Eagles</option>
+      <option value="69">Pittsburgh Steelers</option>
+      <option value="70">San Diego Chargers</option>
+      <option value="71">San Francisco 49ers</option>
+      <option value="72">Seattle Seahawks</option>
+      <option value="73">St. Louis Rams</option>
+      <option value="74">Tampa Bay Buccaneers</option>
+      <option value="75">Tennessee Titans</option>
+      <option value="76">Washington Redskins</option>
+    </optgroup>
+    <optgroup label="SEC">
+      <option value="74">University of Florida</option>
+      <option value="75">University of Georgia</option>
+      <option value="76">University of Kentucky</option>
+      <option value="77">University of Missouri</option>
+      <option value="78">University of South Carolina</option>
+      <option value="79">University of Tennessee</option>
+      <option value="80">Vanderbilt University</option>
+      <option value="81">University of Alabama</option>
+      <option value="82">University of Arkansas</option>
+      <option value="83">Auburn University</option>
+      <option value="84">Louisiana State University</option>
+      <option value="85">University of Mississippi</option>
+      <option value="86">Mississippi State University</option>
+      <option value="87">Texas A&M University</option>
+    </optgroup>
   </select>
   <input type="submit" value="SUBMIT">
 </form>
-
-<!--
-Team.create({:name=>"Arizona Cardinals", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/ari.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Atlanta Falcons", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/atl.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Baltimore Ravens", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/bal.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Buffalo Bills", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/buf.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Carolina Panthers", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/car.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Chicago Bears", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/chi.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Cincinnati Bengals", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/cin.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Cleveland Browns", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/cle.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Dallas Cowboys", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/dal.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Denver Broncos", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/den.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Detroit Lions", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/det.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Green Bay Packers", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/gb.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Houston Texans", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/hou.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Indianapolis Colts", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/ind.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Jacksonville Jaguars", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/jax.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Kansas City Chiefs", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/kc.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Miami Dolphins", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/mia.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Minnesota Vikings", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/min.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"New England Patriots", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/ne.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"New Orleans Saints", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/no.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"New York Giants", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/nyg.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"New York Jets", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/nyj.png&transparent-true", :league=>"NFL"})
-Team.create({:name=>"Oakland Raiders", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/oak.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Philadelphia Eagles", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/phi.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Pittsburgh Steelers", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/pit.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"San Diego Chargers", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/sd.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"San Francisco 49ers", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/sf.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Seattle Seahawks", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/sea.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"St. Louis Rams", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/stl.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Tampa Bay Buccaneers", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/tb.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Tennessee Titans", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/ten.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"Washington Redskins", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/nfl/500/wsh.png&transparent=true", :league=>"NFL"})
-Team.create({:name=>"University of Florida", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/57.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"University of Georgia", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/61.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"University of Kentucky", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/96.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"University of Missouri", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/142.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"University of South Carolina", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2579.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"University of Tennessee", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2633.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"Vanderbilt University", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/238.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"University of Alabama", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/333.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"University of Arkansas", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/8.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"Auburn University", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/2.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"Louisiana State University", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/99.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"University of Mississippi", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/145.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"Mississippi State University", :icon_url=>"http://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/344.png&transparent=true", :league=>"SEC"})
-Team.create({:name=>"Texas A&M University -->
