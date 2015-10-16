@@ -5,7 +5,7 @@ HomeCrowd.Views.BarShow = Backbone.View.extend({
   events: {
     'click .left': 'moveRight',
     'click .right': 'moveLeft',
-
+    'click .add-card': 'addCard',
   },
 
   className: "bar-show",
@@ -19,14 +19,27 @@ HomeCrowd.Views.BarShow = Backbone.View.extend({
   render: function() {
     var view = this.template({bar: this.model });
     this.$el.html(view);
-    this.setWidth();
+    this.setWidth(false);
     this.properArrows();
     return this;
   },
 
-  setWidth: function () {
+  addCard: function(event) {
+    $(event.currentTarget).addClass('card-form').removeClass('add-card');
+    this.setWidth(true);
+    this.properArrows();
+    var view = new HomeCrowd.Views.LoyaltiesForm();
+    $(event.currentTarget).html(view);
+
+  },
+
+  setWidth: function (long) {
     var length = $('.loyalty-card').length;
-    var width = length * 210 + 80;
+    if (long) {
+      var width = length * 210 + 210;
+    } else {
+      var width = length * 210 + 80;
+    }
     var $cards = this.$el.find('.cards');
     $cards.css('width', width + 'px');
   },

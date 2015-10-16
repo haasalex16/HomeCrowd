@@ -98,11 +98,11 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   newLoyalty: function () {
-    var view = new HomeCrowd.Views.LoyaltiesForm();
-    $('#loyaltyForm').removeClass('hideForm');
-    $('#loyaltyForm').addClass('displayForm');
+    var view = new HomeCrowd.Views.BarForm();
+    $('#barForm').removeClass('hideForm');
+    $('#barForm').addClass('displayForm');
 
-    $('#loyaltyForm').html(view.render().$el);
+    $('#barForm').html(view.render().$el);
   },
 
   render: function() {
