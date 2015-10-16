@@ -11,12 +11,13 @@ HomeCrowd.Views.BarShow = Backbone.View.extend({
   className: "bar-show",
 
   initialize: function() {
-    this.listenTo(this.model, 'sync', this.render);
+    // this.listenTo(this.model, 'sync', this.render);
     $(window).on("resize", this.properArrows);
   },
 
 
   render: function() {
+    console.log("rendered");
     var view = this.template({bar: this.model });
     this.$el.html(view);
     this.setWidth(false);
@@ -28,7 +29,7 @@ HomeCrowd.Views.BarShow = Backbone.View.extend({
     $(event.currentTarget).addClass('card-form').removeClass('add-card');
     this.setWidth(true);
     this.properArrows();
-    var view = new HomeCrowd.Views.LoyaltiesForm();
+    var view = new HomeCrowd.Views.LoyaltiesForm({model: this.model});
     $(event.currentTarget).html(view.render().$el);
 
   },

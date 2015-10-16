@@ -90,10 +90,9 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
+    // this.listenTo(this.collection, 'sync', this.render);
     this.markers = [];
     this.geocoder = new google.maps.Geocoder();
-    // this.infowindow = new google.maps.InfoWindow({});
     this.activeMarker = null;
   },
 

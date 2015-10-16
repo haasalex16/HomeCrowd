@@ -12,7 +12,13 @@ class Api::LoyaltiesController < ApplicationController
     render :index
   end
 
-  def destroy
+  def create
+    @loyalty = Loyalty.new(loyalty_params);
+    if @loyalty.save
+      render json: @loyalty
+    else
+      render json: @loyalty.errors.messages, status: 422
+    end
   end
 
   private
