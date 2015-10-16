@@ -90,10 +90,16 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   initialize: function () {
-    this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'teamAdded', this.teamAdded);
     this.markers = [];
     this.geocoder = new google.maps.Geocoder();
     this.activeMarker = null;
+  },
+
+  teamAdded: function(args){
+    var newID = args[0].get('id');
+    var team = HomeCrowd.Collections.loyalties.get(newID).get('loyalty');
+    this.addLoyaltyMarkers(team);
   },
 
   newLoyalty: function () {
@@ -103,6 +109,8 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
     $('#barForm').html(view.render().$el);
   },
+
+
 
   render: function() {
     var view = this.template();
@@ -220,6 +228,11 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   addLeagueMarkers: function(league) {
+    console.log("leageupdated");
+    if (league) {
+      this.league = league;
+    }
+
     this.map.setZoom(12);
     $('.map-details').removeClass('flipped');
 
@@ -228,7 +241,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
 
     this.removeMarkers();
     this.activeMarker = null;
-    this.collection.where({league: league}).forEach(function(model, idx) {
+    this.collection.where({league: this.league}).forEach(function(model, idx) {
       this.addMarker(model, idx);
     }.bind(this));
     this.updateSidebar();
@@ -251,6 +264,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   // },
 
   addLoyaltyMarkers: function (loyalty) {
+    console.log("updated");
     if (loyalty) {
       this.loyalty = loyalty;
     }

@@ -22,7 +22,11 @@ HomeCrowd.Views.LoyaltiesForm = Backbone.View.extend({
     loyalty.save(attrs, {
       success: function(model, response) {
         this.model.fetch();
-        HomeCrowd.Collections.loyalties.add(model);
+        HomeCrowd.Collections.loyalties.fetch({
+          success: function(){
+            HomeCrowd.Collections.loyalties.trigger('teamAdded', [model]);
+          }
+        });
       }.bind(this),
       error: function(model, response) {
         console.log(response);

@@ -17,7 +17,6 @@ HomeCrowd.Views.BarShow = Backbone.View.extend({
 
 
   render: function() {
-    console.log("rendered");
     var view = this.template({bar: this.model });
     this.$el.html(view);
     this.setWidth(false);
