@@ -86,7 +86,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     'click #addMLBstlMarkers': 'addMLBstl',
     'click #addMLBwshMarkers': 'addMLBwsh',
     'click .more-info': 'flipBoard',
-    'click #newLoyalty': 'newLoyalty'
+    'click #close' : 'removeForm'
   },
 
   initialize: function () {
@@ -102,35 +102,50 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.addLoyaltyMarkers(team);
   },
 
-  newLoyalty: function () {
-    var view = new HomeCrowd.Views.BarForm();
-    $('#barForm').removeClass('hideForm');
-    $('#barForm').addClass('displayForm');
-
-    $('#barForm').html(view.render().$el);
-  },
-
   initAuto: function () {
     var input = this.$('#autocomp')[0];
 
     var autocomplete = new google.maps.places.Autocomplete(input);
     autocomplete.addListener('place_changed', function() {
+      $($('#autocomp')[0]).val("")
       var place = autocomplete.getPlace();
-      bar = HomeCrowd.Collections.bars.findWhere({place_id:place.place_id});
-      if (bar){
-        console.log("Existing Bar");
-        $('.map-details-container').removeClass('hide-map');
-        $('#active-bars').removeClass('hide-sidebar');
-        bar.fetch();
-        var view = new HomeCrowd.Views.BarShow({model: bar});
-        $('.map-details').addClass('flipped');
-        $('.details-container').html(view.render().$el);
+      console.log(place);
+      if (place.place_id) {
+        bar = HomeCrowd.Collections.bars.findWhere({place_id:place.place_id});
+        if (bar){
+          $('.map-details-container').removeClass('hide-map');
+          $('#active-bars').removeClass('hide-sidebar');
+          bar.fetch();
+          var view = new HomeCrowd.Views.BarShow({model: bar});
+          $('.map-details').addClass('flipped');
+          $('.details-container').html(view.render().$el);
 
-      } else {
-        console.log("New Bar with ID of: " + place.place_id);
+        } else {
+          console.log("New Bar with ID of: " + place.place_id);
+          $('#addBar').removeClass('hideForm');
+          var address = place.address_components[0].short_name + " " +
+                        place.address_components[1].short_name + " " +
+                        place.address_components[2].long_name + ", " +
+                        place.address_components[3].short_name + " " +
+                        place.address_components[5].short_name;
+          var name = place.name;
+          var phone = place.formatted_phone_number;
+          var google_place_id = place.place_id;
+          var lat = place.geometry.location.lat();
+          var lng = place.geometry.location.lng();
+          var website = place.website;
 
+          var newBar = new HomeCrowd.Models.Bar({address: address, name: name, phone: phone, google_place_id: google_place_id, lat: lat, lng: lng, website: website});
+
+          var view = new HomeCrowd.Views.BarForm({model: newBar});
+          $('#addBar').html(view.render().$el);
+        }
       }
     });
+  },
+
+  removeForm: function(){
+    $('#addBar').addClass('hideForm');
   },
 
   render: function() {
