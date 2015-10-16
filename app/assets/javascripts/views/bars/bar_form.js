@@ -2,22 +2,12 @@ HomeCrowd.Views.BarForm = Backbone.View.extend({
 
   template: JST['bars/form'],
 
-  events: {
-    'submit form': 'submit',
-  },
-
   render: function() {
     var view = this.template();
     this.$el.html(view);
     this.initAuto();
 
     return this;
-  },
-
-  submit: function(event) {
-    event.preventDefault();
-    console.log(event);
-    var attrs = {bar_id: this.bar};
   },
 
   initAuto: function () {

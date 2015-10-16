@@ -566,11 +566,6 @@ header {
   transform: translateY(-50%);
 }
 
-#barForm {
-  position: fixed;
-  color: black;
-}
-
 .hideForm {
   display: none;
 }
@@ -588,4 +583,9 @@ header {
 
 #autocomp {
   width: 100%;
+  color: #254458;
+  background-color: #E9E0D6;
+  padding: 1px;
+  margin: 14px;
+  border-radius: 3px;
 }

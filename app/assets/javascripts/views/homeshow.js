@@ -110,12 +110,34 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     $('#barForm').html(view.render().$el);
   },
 
+  initAuto: function () {
+    var input = this.$('#autocomp')[0];
 
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      bar = HomeCrowd.Collections.bars.findWhere({place_id:place.place_id});
+      if (bar){
+        console.log("Existing Bar");
+        $('.map-details-container').removeClass('hide-map');
+        $('#active-bars').removeClass('hide-sidebar');
+        bar.fetch();
+        var view = new HomeCrowd.Views.BarShow({model: bar});
+        $('.map-details').addClass('flipped');
+        $('.details-container').html(view.render().$el);
+
+      } else {
+        console.log("New Bar with ID of: " + place.place_id);
+
+      }
+    });
+  },
 
   render: function() {
     var view = this.template();
     this.$el.html(view);
     this.showMap();
+    this.initAuto();
     return this;
   },
 
