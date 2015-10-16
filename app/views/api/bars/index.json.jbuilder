@@ -3,6 +3,7 @@ json.array! @bars do | bar |
   json.name     bar.name
   json.address  bar.address
   json.number   bar.number
+  json.place_id bar.google_place_id
   json.teams    bar.loyalties do |loyalty|
     json.id           loyalty.team.id
     json.name         loyalty.team.name

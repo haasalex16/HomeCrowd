@@ -12,11 +12,12 @@ HomeCrowd.Routers.Router = Backbone.Router.extend({
   },
 
   home: function() {
+    this.bars.fetch();
     this.loyalties.fetch();
     var view = new HomeCrowd.Views.HomeShow({collection: this.loyalties});
     this._swapView(view);
   },
-  // 
+  //
   // barShow: function(id) {
   //   // this.bars.fetch();
   //   var model = this.bars.getOrFetch(id);
