@@ -90,7 +90,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   },
 
   initialize: function () {
-    // this.listenTo(this.collection, 'sync', this.render);
+    this.listenTo(this.collection, 'sync', this.render);
     this.markers = [];
     this.geocoder = new google.maps.Geocoder();
     this.activeMarker = null;
@@ -251,6 +251,10 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   // },
 
   addLoyaltyMarkers: function (loyalty) {
+    if (loyalty) {
+      this.loyalty = loyalty;
+    }
+
     this.map.setZoom(12);
     $('.map-details').removeClass('flipped');
 
@@ -260,7 +264,7 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
     this.activeMarker = null;
 
     this.removeMarkers();
-    this.collection.where({loyalty: loyalty}).forEach(function(model, idx) {
+    this.collection.where({loyalty: this.loyalty}).forEach(function(model, idx) {
       this.addMarker(model, idx);
     }.bind(this));
 
@@ -540,8 +544,6 @@ HomeCrowd.Views.HomeShow = Backbone.View.extend ({
   addMLBwsh: function () {
     this.addLoyaltyMarkers('Washington Nationals');
   },
-
-
 
 
   addMarker: function (model, idx) {

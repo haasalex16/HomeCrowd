@@ -11,7 +11,11 @@
     <% if (bar.get('teams')) { %>
       <% bar.get('teams').forEach(function(team){ %>
         <div class="loyalty-card">
-          <img src= "<%= team.icon%>&w=72&h=72" alt=""/>
+          <% if (team.icon) { %>
+            <img src= "<%= team.icon%>&w=72&h=72" alt=""/>
+          <%  } else {%>
+            <img src= "http://www.iconarchive.com/download/i65370/icons-land/metro-raster-sport/Trophy.ico" alt=""/>
+          <% } %>
           <h1>
             <%= team.name %>
           </h1>
