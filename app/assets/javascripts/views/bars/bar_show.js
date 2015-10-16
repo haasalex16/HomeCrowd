@@ -29,7 +29,7 @@ HomeCrowd.Views.BarShow = Backbone.View.extend({
     this.setWidth(true);
     this.properArrows();
     var view = new HomeCrowd.Views.LoyaltiesForm();
-    $(event.currentTarget).html(view);
+    $(event.currentTarget).html(view.render().$el);
 
   },
 
